@@ -31,3 +31,4 @@ Route::get('/forgetPassword', [passwordController::class, 'getForgetPassword']);
 Route::post('/forgetPassword', [passwordController::class, 'postForgetPassword']);
 
 Route::get('homepage', [HomeController::class, 'getHome']);
+Route::post('homepage', [HomeController::class, 'chooseVar']);
