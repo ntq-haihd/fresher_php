@@ -2278,17 +2278,18 @@
                                     <div class="row gx-lg-5">
                                         <div class="col-xl-4 col-md-8 mx-auto">
                                             <div class="product-img-slider sticky-side-div">
-                                                <div class="swiper product-thumbnail-slider p-2 rounded bg-light listSwiper">
+                                                <div
+                                                    class="swiper product-thumbnail-slider p-2 rounded bg-light listSwiper">
                                                     <div class="swiper-wrapper">
-                                                        <div class="swiper-slide" >
+                                                        <div class="swiper-slide">
                                                             <img src="assets/images/products/img-8.png"
                                                                 alt="" class="img-fluid d-block" />
                                                         </div>
-                                                        <div class="swiper-slide" >
+                                                        <div class="swiper-slide">
                                                             <img src="assets/images/products/img-6.png"
                                                                 alt="" class="img-fluid d-block" />
                                                         </div>
-                                                        <div class="swiper-slide" >
+                                                        <div class="swiper-slide">
                                                             <img src="assets/images/products/img-1.png"
                                                                 alt="" class="img-fluid d-block" />
                                                         </div>
@@ -3878,7 +3879,7 @@
             color: $(this).data('id'),
             _token: $('meta[name="csrf-token"]').attr('content')
         };
-        
+
 
         $.ajax({
             url: '/homepage',
@@ -3892,27 +3893,28 @@
                     'images': 0,
                     'stocks': 0
                 }, response)
-                
+
                 $('.price').text(response.price)
                 $('.orders').text(response.orders)
                 $('.revenue').text(response.revenue)
                 $('.stocks').text(response.stocks)
                 $('.images').text(response.images)
+                
 
                 // click chuyen anh theo mau
                 let swiper = new Swiper(".listSwiper", {
                     slidesPerView: 1,
                     spaceBetween: 30,
                 });
-                
+
                 // swiper-slide-thumb-active
-                
-                
+
+
                 let index = response.images;
                 if (index >= 0 && index < $('.swiper-wrapper').children().length) {
-                    swiper.autoplay.stop();
+                    // swiper.autoplay.stop();
                     swiper.slideTo(index);
-                    
+
                 }
             }
         })

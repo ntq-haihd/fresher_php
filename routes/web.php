@@ -7,6 +7,13 @@ use App\Http\Controllers\logUpController;
 use App\Http\Controllers\passwordController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckOutController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AddProductController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\OrderDetailsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,3 +39,17 @@ Route::post('/forgetPassword', [passwordController::class, 'postForgetPassword']
 
 Route::get('homepage', [HomeController::class, 'getHome']);
 Route::post('homepage', [HomeController::class, 'chooseVar']);
+
+Route::get('cart', [CartController::class, 'getCart']);
+
+Route::get('checkout', [CheckOutController::class, 'getCheckOut']);
+
+Route::get('products', [ProductsController::class, 'getProducts']);
+
+Route::get('addproduct', [AddProductController::class, 'getAddProduct']);
+
+Route::get('orders', [OrdersController::class, 'getOrders']);
+
+Route::get('orderdetails', [OrderDetailsController::class, 'getOrderDetails']);
+
+?>
