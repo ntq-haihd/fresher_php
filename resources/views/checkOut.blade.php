@@ -1880,7 +1880,8 @@
                                                 </li>
                                             </ul>
                                         </div>
-
+                                        {{-- <form action="" method="POST">
+                                            @csrf --}}
                                         <div class="tab-content">
                                             <div class="tab-pane fade show active" id="pills-bill-info" role="tabpanel" aria-labelledby="pills-bill-info-tab">
                                                 <div>
@@ -1893,14 +1894,24 @@
                                                         <div class="col-sm-6">
                                                             <div class="mb-3">
                                                                 <label for="billinginfo-firstName" class="form-label">First Name</label>
-                                                                <input type="text" class="form-control" id="billinginfo-firstName" placeholder="Enter first name" value="">
+                                                                <input type="text" class="form-control" name="firstname" id="billinginfo-firstName" placeholder="Enter first name" value="">
+                                                                <span>
+                                                                    {{-- @error('firstname')
+                                                                        {{$message}}
+                                                                    @enderror --}}
+                                                                </span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-6">
                                                             <div class="mb-3">
                                                                 <label for="billinginfo-lastName" class="form-label">Last Name</label>
-                                                                <input type="text" class="form-control" id="billinginfo-lastName" placeholder="Enter last name" value="">
+                                                                <input type="text" class="form-control" name="lastname" id="billinginfo-lastName" placeholder="Enter last name" value="">
+                                                                <span>
+                                                                    {{-- @error('lastname')
+                                                                        {{$message}}
+                                                                    @enderror --}}
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1908,22 +1919,37 @@
                                                     <div class="row">
                                                         <div class="col-sm-6">
                                                             <div class="mb-3">
-                                                                <label for="billinginfo-email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
+                                                                <label for="billinginfo-email" name="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
                                                                 <input type="email" class="form-control" id="billinginfo-email" placeholder="Enter email">
+                                                                <span>
+                                                                    {{-- @error('email')
+                                                                        {{$message}}
+                                                                    @enderror --}}
+                                                                </span>
                                                             </div>
                                                         </div>
 
                                                         <div class="col-sm-6">
                                                             <div class="mb-3">
-                                                                <label for="billinginfo-phone" class="form-label">Phone</label>
+                                                                <label for="billinginfo-phone" name="phone" class="form-label">Phone</label>
                                                                 <input type="text" class="form-control" id="billinginfo-phone" placeholder="Enter phone no.">
+                                                                <span>
+                                                                    {{-- @error('phone')
+                                                                        {{$message}}
+                                                                    @enderror --}}
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="mb-3">
                                                         <label for="billinginfo-address" class="form-label">Address</label>
-                                                        <textarea class="form-control" id="billinginfo-address" placeholder="Enter address" rows="3"></textarea>
+                                                        <textarea class="form-control" id="billinginfo-address" placeholder="Enter address" name="address" rows="3"></textarea>
+                                                        <span>
+                                                            {{-- @error('address')
+                                                                {{$message}}
+                                                            @enderror --}}
+                                                        </span>
                                                     </div>
 
                                                     <div class="row">
@@ -1973,13 +1999,14 @@
                                                     </div>
 
                                                     <div class="d-flex align-items-start gap-3 mt-3">
-                                                        <button type="button" class="btn btn-primary btn-label right ms-auto nexttab" data-nexttab="pills-bill-address-tab">
+                                                        <button class="btn btn-primary btn-label right ms-auto nexttab" data-nexttab="pills-bill-address-tab">
                                                             <i class="ri-truck-line label-icon align-middle fs-16 ms-2"></i>Proceed to Shipping
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                             <!-- end tab pane -->
+                                            {{-- </form> --}}
 
                                             <div class="tab-pane fade" id="pills-bill-address" role="tabpanel" aria-labelledby="pills-bill-address-tab">
                                                 <div>
@@ -2238,26 +2265,25 @@
                                                 </tr>
                                                 <tr>
                                                     <td class="fw-semibold" colspan="2">Sub Total :</td>
-                                                    <td class="fw-semibold text-end">$ 359.96</td>
+                                                    <td class="fw-semibold text-end subTotal">{{$response['subTotal']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">Discount <span class="text-muted">(VELZON15)</span> : </td>
-                                                    <td class="text-end">- $ 50.00</td>
+                                                    <td class="text-end discount">{{$response['discount']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">Shipping Charge :</td>
-                                                    <td class="text-end">$ 24.99</td>
+                                                    <td class="text-end shipping">{{$response['shipping']}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2">Estimated Tax (12%): </td>
-                                                    <td class="text-end">$ 18.20</td>
+                                                    <td class="text-end tax">{{$response['tax']}}</td>
                                                 </tr>
                                                 <tr class="table-active">
                                                     <th colspan="2">Total (USD) :</th>
                                                     <td class="text-end">
-                                                        <span class="fw-semibold">
-                                                            $353.15
-                                                        </span>
+                                                        <span class="fw-semibold total">
+                                                            {{$response['subTotal']}}</span>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -3063,6 +3089,9 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+    <script>
+
+    </script>
 </body>
 
 </html>

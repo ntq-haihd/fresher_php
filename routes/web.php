@@ -41,8 +41,10 @@ Route::get('homepage', [HomeController::class, 'getHome']);
 Route::post('homepage', [HomeController::class, 'chooseVar']);
 
 Route::get('cart', [CartController::class, 'getCart']);
+Route::post('post-cart', [CartController::class, 'postCart'])->name('post-cart');
 
 Route::get('checkout', [CheckOutController::class, 'getCheckOut']);
+Route::post('checkout', [CheckOutController::class, 'postCheckOut']);
 
 Route::get('products', [ProductsController::class, 'getProducts']);
 
