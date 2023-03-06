@@ -3400,32 +3400,21 @@
         $('.totalCheckout').click(function(e) {
             e.preventDefault();
 
-            let checkOutData = [
-                subTotal = $('.subTotal').text(),
-                discount = $('.discount').text(),
-                shipping = $('.shipping').text(),
-                tax = $('.tax').text(),
-                total = $('.total').text()
-            ];
+            let checkOutData = {
+                subTotal: $('.subTotal').text(),
+                discount: $('.discount').text(),
+                shipping: $('.shipping').text(),
+                tax: $('.tax').text(),
+                total: $('.total').text(),
+            };
 
             console.log(checkOutData);
             $.ajax({
                 url: '/post-cart',
                 type: 'POST',
-                data: JSON.stringify(checkOutData),
-                dataType: 'json',
-                contentType: "application/json",
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
+                data: checkOutData,
                 success: function(response) {
-                    response = Object.assign({
-                    'subTotal': 0,
-                    'discount': 0,
-                    'shipping': 0,
-                    'tax': 0,
-                    'total': 0
-                }, response)
+                    console.log(checkOutData);
                 }
             });
 

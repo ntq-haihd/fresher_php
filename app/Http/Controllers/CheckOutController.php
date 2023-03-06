@@ -10,17 +10,9 @@ class CheckOutController extends Controller
     public function getCheckOut(){
 
         $checkOutData = Session::get('checkOutData');
-        $response = array_replace([
-            'subTotal'=> $checkOutData[0],
-            'discount'=> $checkOutData[1],
-            'shipping'=> $checkOutData[2],
-            'tax'=> $checkOutData[3],
-            'total'=> $checkOutData[4]
-        ], $checkOutData);  
+        // dd($response);
 
-        
-
-        return view('checkOut', ['response' => $response]);
+        return view('checkOut', ['checkOutData' => $checkOutData]);
     }
 
     public function postCheckOut(Request $req){
