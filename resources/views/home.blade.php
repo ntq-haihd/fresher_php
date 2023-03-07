@@ -3908,7 +3908,7 @@
                 });
 
                 // swiper-slide-thumb-active
-
+                
 
                 let index = response.images;
                 if (index >= 0 && index < $('.swiper-wrapper').children().length) {

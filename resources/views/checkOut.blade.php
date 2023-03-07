@@ -2851,7 +2851,7 @@
                                                 <th colspan="2">Total (USD) :</th>
                                                 <td class="text-end">
                                                     <span class="fw-semibold total">
-                                                        {{ isset($response['total']) ? $response['total'] : 0 }}</span>
+                                                        {{ isset($checkOutData['total']) ? $checkOutData['total'] : 0 }}</span>
                                                 </td>
                                             </tr>
                                         </tbody>

@@ -10,7 +10,7 @@ class CheckOutController extends Controller
     public function getCheckOut(){
 
         $checkOutData = Session::get('checkOutData');
-        // dd($response);
+        dd($checkOutData);
 
         return view('checkOut', ['checkOutData' => $checkOutData]);
     }

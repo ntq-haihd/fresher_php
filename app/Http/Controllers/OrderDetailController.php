@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
 {
-    public function getOrderDetails(){
+    public function getOrderDetail(){
         return view('orderdetail');
     }
 }

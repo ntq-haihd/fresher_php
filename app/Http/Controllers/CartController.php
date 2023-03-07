@@ -12,9 +12,12 @@ class CartController extends Controller
     }
 
     public function postCart(Request $req){
+
+        
         
         $data = $req->all();
         Session::put('checkOutData', $data);
+        // dd($data);
         return response()->json(['success' => true]);
     }
 }

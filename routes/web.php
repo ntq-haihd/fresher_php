@@ -12,7 +12,7 @@ use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\OrdersController;
-use App\Http\Controllers\OrderDetailsController;
+use App\Http\Controllers\OrderDetailController;
 
 
 /*
@@ -49,9 +49,10 @@ Route::post('checkout', [CheckOutController::class, 'postCheckOut']);
 Route::get('products', [ProductsController::class, 'getProducts']);
 
 Route::get('addproduct', [AddProductController::class, 'getAddProduct']);
+Route::post('addproduct', [AddProductController::class, 'postAddProduct']);
 
 Route::get('orders', [OrdersController::class, 'getOrders']);
 
-Route::get('orderdetails', [OrderDetailsController::class, 'getOrderDetails']);
+Route::get('orderdetail', [OrderDetailController::class, 'getOrderDetail']);
 
 ?>

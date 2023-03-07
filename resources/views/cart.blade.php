@@ -3406,9 +3406,10 @@
                 shipping: $('.shipping').text(),
                 tax: $('.tax').text(),
                 total: $('.total').text(),
+                _token: $('meta[name="csrf-token"]').attr('content')
             };
 
-            console.log(checkOutData);
+            // console.log(checkOutData);
             $.ajax({
                 url: '/post-cart',
                 type: 'POST',
