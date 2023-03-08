@@ -3449,7 +3449,7 @@
             
             // console.log(stock);
             let productData ={
-                title : $('.productTitle').val()
+                title : $('.productTitle').val(),
                 stock : $('.stockInput').val(),
                 price : $('.priceInput').val(),
                 discount : $('.discountInput').val(),
@@ -3467,7 +3467,7 @@
                 }
             });
 
-        })
+        });
         
         
         </script>

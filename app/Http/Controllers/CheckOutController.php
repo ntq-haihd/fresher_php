@@ -3,43 +3,65 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Session;
+use Illuminate\Support\Facades\Validator;
 
 class CheckOutController extends Controller
 {
-    public function getCheckOut(){
+    public function getCheckOut()
+    {
 
         $checkOutData = Session::get('checkOutData');
-        dd($checkOutData);
+        // dd($checkOutData);
 
         return view('checkOut', ['checkOutData' => $checkOutData]);
     }
 
-    public function postCheckOut(Request $req){
+    public function postCheckOut(Request $req)
+    {
+
         
-        $firstname = $req->firstname;
-        $lastname = $req->lastname;
-        $email = $req->email;
-        $phone = $req->phone;
-        $address = $req->address;
+        // validate
+
+        // $firstname = $req->firstname;
+        // $lastname = $req->lastname;
+        // $email = $req->email;
+        // $phone = $req->phone;
+        // $address = $req->address;
 
         $rules = [
             'firstname' => 'required|alpha'
-            ,'lastname' => 'same:firstname'
-            ,'email' => 'email'
-            ,'phone' => 'required|numberic'
-            ,'address' => 'required'
+            ,
+            'lastname' => 'required|alpha'
+            ,
+            'email' => 'email'
+            ,
+            'phone' => 'required|numberic'
+            ,
+            'address' => 'required'
         ];
 
         $messages = [
-            'required' => 'you have to enter this field'
-            ,'email' => 'this mail is invalid'
-            ,'numberic' => 'this is not a phone number'
+            'required' => 'You have to enter this field'
+            ,
+            'email' => 'This mail is invalid'
+            ,
+            'numberic' => 'This is not a phone number'
         ];
 
         
-
-        $req->validate($rules, $messages);
+        $personalInfo = $req->all();
+        Session::put('personalInfo', $personalInfo);
+        $validator = Validator::make($req->all(), $rules, $messages);
+        
+        try {
+            $validator->validate();
+        } catch (ValidationException $e) {
+            return response()->json(['errors' => $e->errors()], 422);
+        }
+       
+        return response()->json(['success' => true]);
     }
 }
 ?>
