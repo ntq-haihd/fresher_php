@@ -2302,17 +2302,18 @@
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link fs-15 p-3 " id="pills-payment-tab"
-                                                        data-bs-toggle="pill" data-bs-target="#pills-payment"
-                                                        type="button" role="tab"
-                                                        aria-controls="pills-payment" aria-selected="false">
+                                                    <button class="nav-link fs-15 p-3 paymentInfoButton"
+                                                        id="pills-payment-tab" data-bs-toggle="pill"
+                                                        data-bs-target="#pills-payment" type="button"
+                                                        role="tab" aria-controls="pills-payment"
+                                                        aria-selected="false">
                                                         <i
                                                             class="ri-bank-card-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
                                                         Payment Info
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link fs-15 p-3 " id="pills-finish-tab"
+                                                    <button class="nav-link fs-15 p-3 finishInfoButton" id="pills-finish-tab"
                                                         data-bs-toggle="pill" data-bs-target="#pills-finish"
                                                         type="button" role="tab" aria-controls="pills-finish"
                                                         aria-selected="false">
@@ -2504,14 +2505,18 @@
                                                                 <label class="form-check-label"
                                                                     for="shippingAddress01">
                                                                     <span
-                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase spanAddress">Home Address</span>
+                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase spanAddress">Home
+                                                                        Address</span>
 
                                                                     <span
-                                                                        class="fs-14 mb-2 d-block spanAddress">Marcus Alfaro</span>
+                                                                        class="fs-14 mb-2 d-block spanAddress">Marcus
+                                                                        Alfaro</span>
                                                                     <span
-                                                                        class="text-muted fw-normal text-wrap mb-1 d-block spanAddress">4739 Bubby Drive Austin, TX 78729</span>
+                                                                        class="text-muted fw-normal text-wrap mb-1 d-block spanAddress">4739
+                                                                        Bubby Drive Austin, TX 78729</span>
                                                                     <span
-                                                                        class="text-muted fw-normal d-block spanAddress">Mo. 012-345-6789</span>
+                                                                        class="text-muted fw-normal d-block spanAddress">Mo.
+                                                                        012-345-6789</span>
                                                                 </label>
                                                             </div>
                                                             <div
@@ -2541,13 +2546,17 @@
                                                                 <label class="form-check-label"
                                                                     for="shippingAddress02">
                                                                     <span
-                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase spanAddress">Office Address</span>
+                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase spanAddress">Office
+                                                                        Address</span>
 
-                                                                    <span class="fs-14 mb-2 d-block spanAddress">James Honda</span>
+                                                                    <span class="fs-14 mb-2 d-block spanAddress">James
+                                                                        Honda</span>
                                                                     <span
-                                                                        class="text-muted fw-normal text-wrap mb-1 d-block spanAddress">1246 Virgil Street Pensacola, FL 32501</span>
+                                                                        class="text-muted fw-normal text-wrap mb-1 d-block spanAddress">1246
+                                                                        Virgil Street Pensacola, FL 32501</span>
                                                                     <span
-                                                                        class="text-muted fw-normal d-block spanAddress">Mo. 012-345-6789</span>
+                                                                        class="text-muted fw-normal d-block spanAddress">Mo.
+                                                                        012-345-6789</span>
                                                                 </label>
                                                             </div>
                                                             <div
@@ -2586,9 +2595,11 @@
                                                                         <span
                                                                             class="fs-20 float-end mt-2 text-wrap d-block fw-semibold spanShipping">Free</span>
                                                                         <span
-                                                                            class="fs-14 mb-1 text-wrap d-block spanShipping">Free Delivery</span>
+                                                                            class="fs-14 mb-1 text-wrap d-block spanShipping">Free
+                                                                            Delivery</span>
                                                                         <span
-                                                                            class="text-muted fw-normal text-wrap d-block spanShipping">Expected Delivery 3 to 5 Days</span>
+                                                                            class="text-muted fw-normal text-wrap d-block spanShipping">Expected
+                                                                            Delivery 3 to 5 Days</span>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -2602,9 +2613,11 @@
                                                                         <span
                                                                             class="fs-20 float-end mt-2 text-wrap d-block fw-semibold spanShipping">$24.99</span>
                                                                         <span
-                                                                            class="fs-14 mb-1 text-wrap d-block spanShipping">Express Delivery</span>
+                                                                            class="fs-14 mb-1 text-wrap d-block spanShipping">Express
+                                                                            Delivery</span>
                                                                         <span
-                                                                            class="text-muted fw-normal text-wrap d-block spanShipping">Delivery within 24hrs.</span>
+                                                                            class="text-muted fw-normal text-wrap d-block spanShipping">Delivery
+                                                                            within 24hrs.</span>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -2627,8 +2640,8 @@
                                             </div>
                                             <!-- end tab pane -->
 
-                                            <div class="tab-pane fad e" id="pills-payment" role="tabpanel"
-                                                aria-labelledby="pills-payment-tab">
+                                            <div class="tab-pane fad e addClass2" id="pills-payment"
+                                                role="tabpanel" aria-labelledby="pills-payment-tab">
                                                 <div>
                                                     <h5 class="mb-1">Payment Selection</h5>
                                                     <p class="text-muted mb-4">Please select and enter your billing
@@ -2636,7 +2649,7 @@
                                                 </div>
 
                                                 <div class="row g-4">
-                                                    <div class="col-lg-4 col-sm-6">
+                                                    <div class="col-lg-4 col-sm-6 choosePayment">
                                                         <div data-bs-toggle="collapse"
                                                             data-bs-target="#paymentmethodCollapse.show"
                                                             aria-expanded="false"
@@ -2648,12 +2661,13 @@
                                                                     for="paymentMethod01">
                                                                     <span class="fs-16 text-muted me-2"><i
                                                                             class="ri-paypal-fill align-bottom"></i></span>
-                                                                    <span class="fs-14 text-wrap">Paypal</span>
+                                                                    <span
+                                                                        class="fs-14 text-wrap spanPayment">Paypal</span>
                                                                 </label>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-lg-4 col-sm-6">
+                                                    <div class="col-lg-4 col-sm-6 choosePayment">
                                                         <div data-bs-toggle="collapse"
                                                             data-bs-target="#paymentmethodCollapse"
                                                             aria-expanded="true"
@@ -2665,14 +2679,14 @@
                                                                     for="paymentMethod02">
                                                                     <span class="fs-16 text-muted me-2"><i
                                                                             class="ri-bank-card-fill align-bottom"></i></span>
-                                                                    <span class="fs-14 text-wrap">Credit / Debit
-                                                                        Card</span>
+                                                                    <span class="fs-14 text-wrap spanPayment">Credit /
+                                                                        Debit Card</span>
                                                                 </label>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-lg-4 col-sm-6">
+                                                    <div class="col-lg-4 col-sm-6 choosePayment">
                                                         <div data-bs-toggle="collapse"
                                                             data-bs-target="#paymentmethodCollapse.show"
                                                             aria-expanded="false"
@@ -2684,7 +2698,7 @@
                                                                     for="paymentMethod03">
                                                                     <span class="fs-16 text-muted me-2"><i
                                                                             class="ri-money-dollar-box-fill align-bottom"></i></span>
-                                                                    <span class="fs-14 text-wrap">Cash on
+                                                                    <span class="fs-14 text-wrap spanPayment">Cash on
                                                                         Delivery</span>
                                                                 </label>
                                                             </div>
@@ -2740,7 +2754,7 @@
                                                             class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back
                                                         to Shipping</button>
                                                     <button type="submit"
-                                                        class="btn btn-primary btn-label right ms-auto nexttab"
+                                                        class="btn btn-primary btn-label right ms-auto nexttab3"
                                                         data-nexttab="pills-finish-tab"><i
                                                             class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Complete
                                                         Order</button>
@@ -2748,7 +2762,7 @@
                                             </div>
                                             <!-- end tab pane -->
 
-                                            <div class="tab-pane fade " id="pills-finish" role="tabpanel"
+                                            <div class="tab-pane fade addClass3" id="pills-finish" role="tabpanel"
                                                 aria-labelledby="pills-finish-tab">
                                                 <div class="text-center py-5">
 
@@ -3750,6 +3764,7 @@
         let personalInfo;
         let addressData;
         let shippingData;
+        let paymentData;
 
         $('.nexttab1').click(function(e) {
             e.preventDefault();
@@ -3800,6 +3815,19 @@
 
         });
 
+        $('.nexttab2').click(function(e) {
+            $('.addClass1').removeClass('show');
+            $('.addClass1').removeClass('active');
+            $('.addClass2').addClass('active show');
+            $('.paymentInfoButton').addClass('active');
+            $('.paymentInfoButton').removeClass('done').addClass('active');
+            $('.paymentInfoButton').attr('tabindex', '-1');
+            $('.paymentInfoButton').attr('aria-selected', 'false');
+            $('.shippingInfoButton').removeAttr('tabindex');
+            $('.shippingInfoButton').attr('aria-selected', 'true');
+            $('.shippingInfoButton').removeClass('active');
+        });
+
 
         $('.chooseAddress').click(function(e) {
             e.preventDefault();
@@ -3822,10 +3850,28 @@
             };
         });
 
-        $('.nexttab2').click(function(e) {
+        $('.choosePayment').click(function(e) {
             e.preventDefault();
-            let shippingInfo = $.extend({}, personalInfo, addressData, shippingData);
+            paymentData = {
+                payment: $(this).find('.spanPayment').text(),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+        });
+
+        $('.nexttab3').click(function(e) {
+            e.preventDefault();
+            let shippingInfo = $.extend({}, personalInfo, addressData, shippingData, paymentData);
             // console.log(shippingInfo);
+            $('.addClass2').removeClass('show');
+            $('.addClass2').removeClass('active');
+            $('.addClass3').addClass('active show');
+            $('.finishInfoButton').addClass('active');
+            $('.finishInfoButton').removeClass('done').addClass('active');
+            $('.finishInfoButton').attr('tabindex', '-1');
+            $('.finishInfoButton').attr('aria-selected', 'false');
+            $('.paymentInfoButton').removeAttr('tabindex');
+            $('.paymentInfoButton').attr('aria-selected', 'true');
+            $('.paymentInfoButton').removeClass('active');
             $.ajax({
                 url: 'checkout',
                 type: 'POST',
@@ -3835,7 +3881,7 @@
 
                 }
             })
-            
+
         });
     </script>
 </body>

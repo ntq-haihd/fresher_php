@@ -16,7 +16,7 @@ class CartController extends Controller
         
         
         $data = $req->all();
-        Session::put('checkOutData', $data);
+        Session::put('dataShoppingCart', $data);
         // dd($data);
         return response()->json(['success' => true]);
     }

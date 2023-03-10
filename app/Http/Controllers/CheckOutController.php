@@ -12,10 +12,10 @@ class CheckOutController extends Controller
     public function getCheckOut()
     {
 
-        $checkOutData = Session::get('checkOutData');
+        $checkOutData = Session::get('dataShoppingCart');
         // dd($checkOutData);
 
-        return view('checkOut', ['checkOutData' => $checkOutData]);
+        return view('checkOut', ['dataShoppingCart' => $checkOutData]);
     }
 
     public function postCheckOut(Request $req)
@@ -24,13 +24,8 @@ class CheckOutController extends Controller
 
         // validate
 
-        // $firstname = $req->firstname;
-        // $lastname = $req->lastname;
-        // $email = $req->email;
-        // $phone = $req->phone;
-        // $address = $req->address;
         $personalInfo = $req->all();
-        Session::put('personalInfo', $personalInfo);
+        Session::put('shippingInfo', $personalInfo);
         
 
 

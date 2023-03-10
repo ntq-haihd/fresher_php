@@ -2364,16 +2364,13 @@
                                             </div>
                                             <div class="col-sm">
                                                 <h5 class="fs-14 text-truncate"><a
-                                                        href="ecommerce-product-detail.html" class="text-dark">Noise
-                                                        NoiseFit Endure Smart Watch</a></h5>
-
+                                                        href="ecommerce-product-detail.html" class="text-dark">Noise NoiseFit Endure Smart Watch</a></h5>
                                                 <ul class="list-inline text-muted">
                                                     <li class="list-inline-item">Color : <span
                                                             class="fw-medium">Black</span></li>
                                                     <li class="list-inline-item">Size : <span
                                                             class="fw-medium">32.5mm</span></li>
                                                 </ul>
-
                                                 <div class="input-step">
                                                     <button type="button" class="minus">–</button>
                                                     <input type="number" class="product-quantity" value="1"
@@ -2384,8 +2381,7 @@
                                             <div class="col-sm-auto">
                                                 <div class="text-lg-end">
                                                     <p class="text-muted mb-1">Item Price:</p>
-                                                    <h5 class="fs-14">$<span class="product-price">94.99</span>
-                                                    </h5>
+                                                    <h5 class="fs-14">$<span class="product-price">94.99</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -2412,8 +2408,7 @@
                                             <div class="col-sm-auto">
                                                 <div class="d-flex align-items-center gap-2 text-muted">
                                                     <div>Total :</div>
-                                                    <h5 class="fs-14 mb-0">$<span
-                                                            class="product-line-price">94.99</span></h5>
+                                                    <h5 class="fs-14 mb-0">$<span class="product-line-price">94.99</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -2433,16 +2428,12 @@
                                             </div>
                                             <div class="col-sm">
                                                 <h5 class="fs-14 text-truncate"><a
-                                                        href="ecommerce-product-detail.html" class="text-dark">350
-                                                        ml Glass Grocery Container</a></h5>
-
+                                                        href="ecommerce-product-detail.html" class="text-dark">350ml Glass Grocery Container</a></h5>
                                                 <ul class="list-inline text-muted">
                                                     <li class="list-inline-item">Color : <span
                                                             class="fw-medium">White</span></li>
-                                                    <li class="list-inline-item">Size : <span class="fw-medium">350
-                                                            ml</span></li>
+                                                    <li class="list-inline-item">Size : <span class="fw-medium">350ml</span></li>
                                                 </ul>
-
                                                 <div class="input-step">
                                                     <button type="button" class="minus">–</button>
                                                     <input type="number" class="product-quantity" value="1"
@@ -2453,8 +2444,7 @@
                                             <div class="col-sm-auto">
                                                 <div class="text-lg-end">
                                                     <p class="text-muted mb-1">Item Price:</p>
-                                                    <h5 class="fs-14">$<span class="product-price">24.99</span>
-                                                    </h5>
+                                                    <h5 class="fs-14">$<span class="product-price">24.99</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -2481,8 +2471,7 @@
                                             <div class="col-sm-auto">
                                                 <div class="d-flex align-items-center gap-2 text-muted">
                                                     <div>Total :</div>
-                                                    <h5 class="fs-14 mb-0">$<span
-                                                            class="product-line-price">24.99</span></h5>
+                                                    <h5 class="fs-14 mb-0">$<span class="product-line-price">24.99</span></h5>
                                                 </div>
                                             </div>
                                         </div>
@@ -2545,8 +2534,8 @@
                                                         <tr class="table-active">
                                                             <th>Total (USD) :</th>
                                                             <td class="text-end">
-                                                                <span class="fw-semibold total"
-                                                                    name="total" id="cart-total">$415.96
+                                                                <span class="fw-semibold total" name="total"
+                                                                    id="cart-total">$415.96
                                                                 </span>
                                                             </td>
                                                         </tr>
@@ -3399,6 +3388,21 @@
 
         $('.totalCheckout').click(function(e) {
             e.preventDefault();
+            let allDataProduct = [];
+            $('.product').each(function() {
+                let dataProduct = {
+                    productName: $(this).find('h5').text(),
+                    productColor: $(this).find('.list-inline-item:eq(0) .fw-medium').text(),
+                    productSize: $(this).find('.list-inline-item:eq(1) .fw-medium').text(),
+                    productQuantity: $(this).find('.product-quantity').val(),
+                    productPrice: $(this).find('.product-price').text(),
+                    productTotalPrice: $(this).find('.product-line-price').text(),
+                    productImage: $(this).find('.img-fluid').attr('src'),
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                }
+                allDataProduct.push(dataProduct);
+                // console.log(allDataProduct);
+            });
 
             let checkOutData = {
                 subTotal: $('.subTotal').text(),
@@ -3409,21 +3413,19 @@
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
 
+            let dataShoppingCart = $.extend({}, allDataProduct, checkOutData);
+
             // console.log(checkOutData);
             $.ajax({
                 url: '/post-cart',
                 type: 'POST',
-                data: checkOutData,
+                data: dataShoppingCart,
                 success: function(response) {
-                    console.log(checkOutData);
+                    console.log(dataShoppingCart);
                 }
             });
 
-        })
-
-
-
-        // console.log(data);
+        });
     </script>
 </body>
 
