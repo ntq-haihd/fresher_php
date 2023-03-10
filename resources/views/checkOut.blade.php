@@ -2280,7 +2280,7 @@
 
                                             <ul class="nav nav-pills nav-justified custom-nav" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link fs-15 p-3 active"
+                                                    <button class="nav-link fs-15 p-3 personalInfoButton active"
                                                         id="pills-bill-info-tab" data-bs-toggle="pill"
                                                         data-bs-target="#pills-bill-info" type="button"
                                                         role="tab" aria-controls="pills-bill-info"
@@ -2291,17 +2291,18 @@
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link fs-15 p-3" id="pills-bill-address-tab"
-                                                        data-bs-toggle="pill" data-bs-target="#pills-bill-address"
-                                                        type="button" role="tab"
-                                                        aria-controls="pills-bill-address" aria-selected="false">
+                                                    <button class="nav-link fs-15 p-3 shippingInfoButton"
+                                                        id="pills-bill-address-tab" data-bs-toggle="pill"
+                                                        data-bs-target="#pills-bill-address" type="button"
+                                                        role="tab" aria-controls="pills-bill-address"
+                                                        aria-selected="false">
                                                         <i
                                                             class="ri-truck-line fs-16 p-2 bg-soft-primary text-primary rounded-circle align-middle me-2"></i>
                                                         Shipping Info
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link fs-15 p-3" id="pills-payment-tab"
+                                                    <button class="nav-link fs-15 p-3 " id="pills-payment-tab"
                                                         data-bs-toggle="pill" data-bs-target="#pills-payment"
                                                         type="button" role="tab"
                                                         aria-controls="pills-payment" aria-selected="false">
@@ -2311,7 +2312,7 @@
                                                     </button>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <button class="nav-link fs-15 p-3" id="pills-finish-tab"
+                                                    <button class="nav-link fs-15 p-3 " id="pills-finish-tab"
                                                         data-bs-toggle="pill" data-bs-target="#pills-finish"
                                                         type="button" role="tab" aria-controls="pills-finish"
                                                         aria-selected="false">
@@ -2460,7 +2461,7 @@
                                                     </div>
 
                                                     <div class="d-flex align-items-start gap-3 mt-3">
-                                                        <button type="submit"
+                                                        <button type="button"
                                                             class="btn btn-primary btn-label right ms-auto nexttab1"
                                                             data-nexttab="">
                                                             <i
@@ -2496,23 +2497,21 @@
                                                         </div>
                                                     </div>
                                                     <div class="row gy-3">
-                                                        <div class="col-lg-4 col-sm-6">
+                                                        <div class="col-lg-4 col-sm-6 chooseAddress">
                                                             <div class="form-check card-radio">
                                                                 <input id="shippingAddress01" name="shippingAddress"
                                                                     type="radio" class="form-check-input" checked>
                                                                 <label class="form-check-label"
                                                                     for="shippingAddress01">
                                                                     <span
-                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase">Home
-                                                                        Address</span>
+                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase spanAddress">Home Address</span>
 
-                                                                    <span class="fs-14 mb-2 d-block">Marcus
-                                                                        Alfaro</span>
                                                                     <span
-                                                                        class="text-muted fw-normal text-wrap mb-1 d-block">4739
-                                                                        Bubby Drive Austin, TX 78729</span>
-                                                                    <span class="text-muted fw-normal d-block">Mo.
-                                                                        012-345-6789</span>
+                                                                        class="fs-14 mb-2 d-block spanAddress">Marcus Alfaro</span>
+                                                                    <span
+                                                                        class="text-muted fw-normal text-wrap mb-1 d-block spanAddress">4739 Bubby Drive Austin, TX 78729</span>
+                                                                    <span
+                                                                        class="text-muted fw-normal d-block spanAddress">Mo. 012-345-6789</span>
                                                                 </label>
                                                             </div>
                                                             <div
@@ -2535,23 +2534,20 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="col-lg-4 col-sm-6">
+                                                        <div class="col-lg-4 col-sm-6 chooseAddress">
                                                             <div class="form-check card-radio">
                                                                 <input id="shippingAddress02" name="shippingAddress"
                                                                     type="radio" class="form-check-input">
                                                                 <label class="form-check-label"
                                                                     for="shippingAddress02">
                                                                     <span
-                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase">Office
-                                                                        Address</span>
+                                                                        class="mb-4 fw-semibold d-block text-muted text-uppercase spanAddress">Office Address</span>
 
-                                                                    <span class="fs-14 mb-2 d-block">James
-                                                                        Honda</span>
+                                                                    <span class="fs-14 mb-2 d-block spanAddress">James Honda</span>
                                                                     <span
-                                                                        class="text-muted fw-normal text-wrap mb-1 d-block">1246
-                                                                        Virgil Street Pensacola, FL 32501</span>
-                                                                    <span class="text-muted fw-normal d-block">Mo.
-                                                                        012-345-6789</span>
+                                                                        class="text-muted fw-normal text-wrap mb-1 d-block spanAddress">1246 Virgil Street Pensacola, FL 32501</span>
+                                                                    <span
+                                                                        class="text-muted fw-normal d-block spanAddress">Mo. 012-345-6789</span>
                                                                 </label>
                                                             </div>
                                                             <div
@@ -2579,8 +2575,8 @@
                                                     <div class="mt-4">
                                                         <h5 class="fs-14 mb-3">Shipping Method</h5>
 
-                                                        <div class="row g-4">
-                                                            <div class="col-lg-6">
+                                                        <div class="row g-4 ">
+                                                            <div class="col-lg-6 chooseShipping">
                                                                 <div class="form-check card-radio">
                                                                     <input id="shippingMethod01"
                                                                         name="shippingMethod" type="radio"
@@ -2588,17 +2584,15 @@
                                                                     <label class="form-check-label"
                                                                         for="shippingMethod01">
                                                                         <span
-                                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-semibold">Free</span>
+                                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-semibold spanShipping">Free</span>
                                                                         <span
-                                                                            class="fs-14 mb-1 text-wrap d-block">Free
-                                                                            Delivery</span>
+                                                                            class="fs-14 mb-1 text-wrap d-block spanShipping">Free Delivery</span>
                                                                         <span
-                                                                            class="text-muted fw-normal text-wrap d-block">Expected
-                                                                            Delivery 3 to 5 Days</span>
+                                                                            class="text-muted fw-normal text-wrap d-block spanShipping">Expected Delivery 3 to 5 Days</span>
                                                                     </label>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-lg-6">
+                                                            <div class="col-lg-6 chooseShipping">
                                                                 <div class="form-check card-radio">
                                                                     <input id="shippingMethod02"
                                                                         name="shippingMethod" type="radio"
@@ -2606,13 +2600,11 @@
                                                                     <label class="form-check-label"
                                                                         for="shippingMethod02">
                                                                         <span
-                                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-semibold">$24.99</span>
+                                                                            class="fs-20 float-end mt-2 text-wrap d-block fw-semibold spanShipping">$24.99</span>
                                                                         <span
-                                                                            class="fs-14 mb-1 text-wrap d-block">Express
-                                                                            Delivery</span>
+                                                                            class="fs-14 mb-1 text-wrap d-block spanShipping">Express Delivery</span>
                                                                         <span
-                                                                            class="text-muted fw-normal text-wrap d-block">Delivery
-                                                                            within 24hrs.</span>
+                                                                            class="text-muted fw-normal text-wrap d-block spanShipping">Delivery within 24hrs.</span>
                                                                     </label>
                                                                 </div>
                                                             </div>
@@ -2627,7 +2619,7 @@
                                                             class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back
                                                         to Personal Info</button>
                                                     <button type="button"
-                                                        class="btn btn-primary btn-label right ms-auto nexttab"
+                                                        class="btn btn-primary btn-label right ms-auto nexttab2"
                                                         data-nexttab="pills-payment-tab"><i
                                                             class="ri-bank-card-line label-icon align-middle fs-16 ms-2"></i>Continue
                                                         to Payment</button>
@@ -2747,7 +2739,7 @@
                                                         data-previous="pills-bill-address-tab"><i
                                                             class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>Back
                                                         to Shipping</button>
-                                                    <button type="button"
+                                                    <button type="submit"
                                                         class="btn btn-primary btn-label right ms-auto nexttab"
                                                         data-nexttab="pills-finish-tab"><i
                                                             class="ri-shopping-basket-line label-icon align-middle fs-16 ms-2"></i>Complete
@@ -2756,7 +2748,7 @@
                                             </div>
                                             <!-- end tab pane -->
 
-                                            <div class="tab-pane fade" id="pills-finish" role="tabpanel"
+                                            <div class="tab-pane fade " id="pills-finish" role="tabpanel"
                                                 aria-labelledby="pills-finish-tab">
                                                 <div class="text-center py-5">
 
@@ -3755,10 +3747,14 @@
     <script>
         var $ = jQuery;
 
+        let personalInfo;
+        let addressData;
+        let shippingData;
+
         $('.nexttab1').click(function(e) {
             e.preventDefault();
 
-            let personalInfo = {
+            personalInfo = {
                 firstname: $('.firstname').val(),
                 lastname: $('.lastname').val(),
                 email: $('.email').val(),
@@ -3769,19 +3765,17 @@
                 zipCode: $('.zipCode').val(),
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
-            $('.addClass').removeClass('show');
-            $('.addClass').removeClass('active');
-            $('.addClass1').addClass('active show');
+
             $.ajax({
                 url: 'checkout',
                 type: 'POST',
                 data: personalInfo,
                 success: function(response) {
-                    // console.log('personalInfo');
-
+                    console.log('abc');
 
                 },
                 error: function(response) {
+
                     let errors = response.responseJSON.errors;
                     if (errors) {
                         $('#firstname').text(errors.firstname ? errors.firstname[0] : '');
@@ -3789,13 +3783,60 @@
                         $('#email').text(errors.email ? errors.email[0] : '');
                         $('#phone').text(errors.phone ? errors.phone[0] : '');
                         $('#address').text(errors.address ? errors.address[0] : '');
+                    } else {
+                        $('.addClass').removeClass('show');
+                        $('.addClass').removeClass('active');
+                        $('.addClass1').addClass('active show');
+                        $('.shippingInfoButton').addClass('active');
+                        $('.shippingInfoButton').removeClass('done').addClass('active');
+                        $('.shippingInfoButton').attr('tabindex', '-1');
+                        $('.shippingInfoButton').attr('aria-selected', 'false');
+                        $('.personalInfoButton').removeAttr('tabindex');
+                        $('.personalInfoButton').attr('aria-selected', 'true');
+                        $('.personalInfoButton').removeClass('active');
                     }
-
-
                 }
             })
 
-        })
+        });
+
+
+        $('.chooseAddress').click(function(e) {
+            e.preventDefault();
+            addressData = {
+                typeAddress: $(this).find('.spanAddress:first').text(),
+                receiverName: $(this).find('.spanAddress:nth-child(2)').text(),
+                receiverAddress: $(this).find('.spanAddress:nth-child(3)').text(),
+                receiverPhone: $(this).find('.spanAddress:nth-child(4)').text(),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+        });
+
+        $('.chooseShipping').click(function(e) {
+            e.preventDefault();
+            shippingData = {
+                priceShipping: $(this).find('.spanShipping:first').text(),
+                typeShipping: $(this).find('.spanShipping:nth-child(2)').text(),
+                timeShipping: $(this).find('.spanShipping:nth-child(3)').text(),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+        });
+
+        $('.nexttab2').click(function(e) {
+            e.preventDefault();
+            let shippingInfo = $.extend({}, personalInfo, addressData, shippingData);
+            // console.log(shippingInfo);
+            $.ajax({
+                url: 'checkout',
+                type: 'POST',
+                data: shippingInfo,
+                success: function(response) {
+                    console.log('abc');
+
+                }
+            })
+            
+        });
     </script>
 </body>
 
