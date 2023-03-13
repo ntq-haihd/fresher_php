@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Session;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class logInController extends Controller
 {
@@ -30,12 +32,17 @@ class logInController extends Controller
 
         $req->validate($rules, $messages);
         
+        $user = [
+            'name' => $username,
+            'password' => $password,
+        ];
 
-        if($username == Session::get('username') && $password == Session::get('password')){
-            dd('Đăng nhập thành công');
-            session()->flush();
+
+        if(Auth::attempt($user)){
+            return redirect('cart');
         }else{
-            dd('Thông tin đăng nhập không chính xác');  
+            return redirect()->back()->with('status', 'Incorrect username or password!');
         }
+
     }
 }

@@ -6,28 +6,33 @@ use App\Mail\NotifyMail;
 use Illuminate\Http\Request;
 use Session;
 use Mail;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class passwordController extends Controller
 {
-    public function getForgetPassword(){
+    public function getForgetPassword()
+    {
         return view('forgottenPassword');
     }
 
-    public function postForgetPassword(Request $req){
+    public function postForgetPassword(Request $req)
+    {
         $email = $req->email;
 
-        $rules = ['email'=>'email|required'];
-        $messages = ['email.email'=>'this is not an email'];
+        $rules = ['email' => 'email|required'];
+        $messages = ['email.email' => 'this is not an email'];
 
         $req->validate($rules, $messages);
 
-        $mailable = new NotifyMail('123456');
-        if($email == Session::get('email')){
+
+        if (User::where('email', $email)->first()) {
+            $mailable = new NotifyMail('123456');
             Mail::to($email)->send($mailable);
-            return 'New Password has sent to your email!';
-        }else{
-            return 'Your email is not correct';
+            return redirect('loginForm');
+        } else {
+            return redirect()->back()->with('status', 'Email does not exist!');
         }
-        
+
     }
 }

@@ -89,6 +89,9 @@
                                             @error('password')
                                                 {{ $message }}
                                             @enderror
+                                            @if(session('status'))
+                                                <span style="color: red">{{ session('status') }}</span>
+                                            @endif
                                         </div>
 
                                         <div class="form-check">

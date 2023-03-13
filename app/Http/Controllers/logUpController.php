@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Session;
+use App\Models\User;
 
 class logUpController extends Controller
 {
@@ -34,9 +36,13 @@ class logUpController extends Controller
         
         $req->validate($rules, $messages);
         
-        $req->session()->put('username', $username);
-        $req->session()->put('password', $password);
-        $req->session()->put('email', $email);
+        $user = User::create(
+            [
+                'name' => $username,
+                'email' => $email,
+                'password' => Hash::make($password)
+            ]
+        );
 
        return redirect('loginForm');
         

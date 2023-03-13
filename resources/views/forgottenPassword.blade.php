@@ -73,6 +73,9 @@
                                             @error('email')
                                                 {{ $message }}
                                             @enderror
+                                            @if(session('status'))
+                                                <div style="color: red">{{ session('status') }}</div>
+                                            @endif
                                         </div>
                                         <div class="text-center mt-4">
                                             <button class="btn btn-primary w-100" type="submit">Send Reset Link</button>
