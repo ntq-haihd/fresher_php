@@ -17,7 +17,7 @@ class logInController extends Controller
     public function postLogIn(Request $req){
         $username = $req->username;
         $password = $req->password;
-        
+
         $rules =[
             'username'=>'required|alpha|min:6|max:10'
             ,'password'=>'required|regex:/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/'
@@ -31,9 +31,9 @@ class logInController extends Controller
         ];
 
         $req->validate($rules, $messages);
-        
+
         $user = [
-            'name' => $username,
+            'username' => $username,
             'password' => $password,
         ];
 

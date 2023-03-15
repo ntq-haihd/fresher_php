@@ -82,6 +82,18 @@
                                         </div>
 
                                         <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="phone" id="phone"
+                                                placeholder="Enter phone number">
+                                            <div style="color: red">
+                                                @error('phone')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
                                             <label class="form-label" for="password-input">Password</label>
                                             <div class="position-relative auth-pass-inputgroup">
                                                 <input type="password" class="form-control pe-5 password-input"
