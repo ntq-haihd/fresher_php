@@ -13,21 +13,20 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('user_addresses', function (Blueprint $table) {
+        Schema::create('rating_review', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->char('phone_number');
-            $table->enum('address_type', ['8 am -> 18 am', '6 pm -> 9 pm']);
-            $table->string('save_address');
-            $table->string('city');
-            $table->string('country');
-            $table->string('zipcode');
-
+            $table->unsignedBigInteger('order_id');
+            $table->unsignedBigInteger('shop_id');
+            $table->float('shop_rating');
+            $table->float('product_variable_rating');
+            $table->string('review');
             $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('shop_id')->references('id')->on('shops');
+
         });
     }
 
@@ -38,6 +37,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_addresses');
+        Schema::dropIfExists('rating_review');
     }
 };

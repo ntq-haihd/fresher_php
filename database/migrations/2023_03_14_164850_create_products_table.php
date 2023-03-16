@@ -20,20 +20,21 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->string('thumbnail')->nullable();
             $table->string('images')->nullable();
-            $table->enum('status', ['show', 'block']);
-            $table->text('description');
+            $table->enum('status', [0, 1]);
+            $table->text('description')->nullable();
             $table->unsignedBigInteger('cat_id');
-            $table->string('count_views');
-            $table->float('avg_rating');
+            $table->integer('count_views');
             $table->unsignedBigInteger('shop_id');
-            $table->string('total_orders');
-            $table->string('total_stocks');
+            $table->integer('total_orders');
+            $table->integer('total_stocks');
             $table->string('reference_product');
             $table->string('tags');
 
 
-            $table->foreign('cat_id')->references('id')->on('catalogs');
+            $table->foreign('cat_id')->references('id')->on('categories');
             $table->foreign('shop_id')->references('id')->on('shops');
+
+
 
         });
     }

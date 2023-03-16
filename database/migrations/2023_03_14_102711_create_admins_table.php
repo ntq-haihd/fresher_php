@@ -21,7 +21,8 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->char('phone_number')->unique();
             $table->string('avatar')->nullable();
-            $table->enum('status', ['active', 'block']);
+            $table->enum('status', [0, 1]);
+            $table->enum('position', [0, 1])->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

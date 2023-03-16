@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('order_detail', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('order_id');
-            $table->unsignedBigInteger('product_details_id');
+            $table->unsignedBigInteger('product_variables_id');
             $table->float('regular_price');
             $table->float('sale_price');
             $table->integer('quantity');
 
             $table->foreign('order_id')->references('id')->on('orders');
-            $table->foreign('product_details_id')->references('id')->on('product_details');
+            $table->foreign('product_variables_id')->references('id')->on('product_variables');
         });
     }
 
