@@ -3,7 +3,7 @@
 use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\logInController;
-use App\Http\Controllers\logUpController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\passwordController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
@@ -28,11 +28,11 @@ use App\Http\Controllers\OrderDetailController;
 
 Route::get('/', [DemoController::class, 'show'])->name('demo.show');
 
-Route::get('/loginForm', [logInController::class, 'getLogIn']);
-Route::post('/loginForm', [logInController::class, 'postLogIn']);
+Route::get('/loginForm', [UsersController::class, 'getLogIn']);
+Route::post('/loginForm', [UsersController::class, 'postLogIn']);
 
-Route::get('/signupForm', [logUpController::class, 'getLogUp']);
-Route::post('/signupForm', [logUpController::class, 'postLogUp']);
+Route::get('/signupForm', [UsersController::class, 'getSignUp']);
+Route::post('/signupForm', [UsersController::class, 'postSignUp']);
 
 Route::get('/forgetPassword', [passwordController::class, 'getForgetPassword']);
 Route::post('/forgetPassword', [passwordController::class, 'postForgetPassword']);
