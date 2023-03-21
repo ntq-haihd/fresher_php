@@ -2,21 +2,34 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CategoriesService;
+use App\Services\ProductsService;
 use Illuminate\Http\Request;
 use Session;
 
 class AddProductController extends Controller
 {
-    public function getAddProduct(){
-        return view('addProduct');
+
+    protected $productsService;
+    protected $categoriesService;
+
+    public function __construct(ProductsService $productsService, CategoriesService $categoriesService)
+    {
+        $this->productsService = $productsService;
+        $this->categoriesService = $categoriesService;
+    }
+    public function getAddProduct()
+    {
+
+        $categories = $this->categoriesService->getAll();
+
+        return view('addProduct', compact('categories'));
     }
 
-    public function postAddProduct(Request $req){
+    public function postAddProduct(Request $req)
+    {
 
-        $product = $req->all();
-        Session::put('productData', $product);
-        // dd($product);
-        return response()->json(['success' => true]);
+        $product = $this->productsService->create($req);
 
     }
 }
