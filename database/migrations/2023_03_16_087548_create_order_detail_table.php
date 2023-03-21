@@ -20,6 +20,7 @@ return new class extends Migration
             $table->float('regular_price');
             $table->float('sale_price');
             $table->integer('quantity');
+            $table->timestamps();
 
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_variables_id')->references('id')->on('product_variables');

@@ -2,15 +2,13 @@
 
 use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\logInController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\passwordController;
-use App\Http\Controllers\EmailController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AddProductController;
+use App\Http\Controllers\AddCategoriesController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderDetailController;
 
@@ -34,8 +32,8 @@ Route::post('/loginForm', [UsersController::class, 'postLogIn']);
 Route::get('/signupForm', [UsersController::class, 'getSignUp']);
 Route::post('/signupForm', [UsersController::class, 'postSignUp']);
 
-Route::get('/forgetPassword', [passwordController::class, 'getForgetPassword']);
-Route::post('/forgetPassword', [passwordController::class, 'postForgetPassword']);
+Route::get('/forgetPassword', [UsersController::class, 'getForgetPassword']);
+Route::post('/forgetPassword', [UsersController::class, 'postForgetPassword']);
 
 Route::get('homepage', [HomeController::class, 'getHome']);
 Route::post('homepage', [HomeController::class, 'chooseVar']);
@@ -47,6 +45,9 @@ Route::get('checkout', [CheckOutController::class, 'getCheckOut']);
 Route::post('checkout', [CheckOutController::class, 'postCheckOut']);
 
 Route::get('products', [ProductsController::class, 'getProducts']);
+
+Route::get('addcategories', [AddCategoriesController::class, 'getAddCategories']);
+Route::post('addcategories', [AddCategoriesController::class, 'postAddCategories']);
 
 Route::get('addproduct', [AddProductController::class, 'getAddProduct']);
 Route::post('addproduct', [AddProductController::class, 'postAddProduct']);

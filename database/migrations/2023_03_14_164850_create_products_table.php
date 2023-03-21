@@ -29,6 +29,7 @@ return new class extends Migration
             $table->integer('total_stocks');
             $table->string('reference_product');
             $table->string('tags');
+            $table->timestamps();
 
 
             $table->foreign('cat_id')->references('id')->on('categories');

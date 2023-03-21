@@ -2176,7 +2176,7 @@
                                     <!-- end card header -->
                                     <div class="card-body">
 
-                                        <div class="tab-content text-muted">
+                                        {{-- <div class="tab-content text-muted">
                                             <div class="tab-pane active" id="productnav-all" role="tabpanel">
                                                 <div id="table-product-list-all" class="table-card gridjs-border-none"></div>
                                             </div>
@@ -2195,7 +2195,7 @@
                                                 </div>
                                             </div>
                                             <!-- end tab pane -->
-                                        </div>
+                                        </div> --}}
                                         <!-- end tab content -->
 
                                     </div>
@@ -2803,7 +2803,7 @@
                     <div id="preloader-menu">
                         <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Preloader</h6>
                         <p class="text-muted">Choose a preloader.</p>
-                    
+
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-check sidebar-setting card-radio">
@@ -2861,7 +2861,7 @@
                                 <h5 class="fs-13 text-center mt-2">Disable</h5>
                             </div>
                         </div>
-                    
+
                     </div>
                     <!-- end preloader-menu -->
 

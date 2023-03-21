@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Repositories\RepositoryInterface;
+use Illuminate\Support\Facades\App;
 use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 abstract class BaseRepository implements RepositoryInterface
