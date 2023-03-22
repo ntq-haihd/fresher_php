@@ -2257,7 +2257,7 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Create Product</h4>
+                                <h4 class="mb-sm-0">Create Categories</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
@@ -2272,14 +2272,17 @@
                     </div>
                     <!-- end page title -->
 
-                    <form id="createproduct-form" class="needs-validation" method="POST">
+                    <form id="createproduct-form"  class="needs-validation" method="POST" >
                         @csrf
+
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Title</label>
+                                <label class="form-label"
+                                    for="product-price-input">Title</label>
                                 <div class="input-group has-validation mb-3">
-                                    <input type="text" class="form-control priceInput" id="product-price-input"
-                                        name="title" placeholder="Enter title" aria-label="title"
+                                    <input type="text" class="form-control priceInput"
+                                        id="product-price-input" name="title"
+                                        placeholder="Enter title" aria-label="title"
                                         aria-describedby="product-price-addon" required>
                                 </div>
 
@@ -2287,73 +2290,18 @@
                         </div>
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Product Code</label>
+                                <label class="form-label"
+                                    for="product-price-input">Description</label>
                                 <div class="input-group has-validation mb-3">
-                                    <input type="text" class="form-control priceInput" id="product-price-input"
-                                        name="product_code" placeholder="Enter title" aria-label="title"
-                                        aria-describedby="product-price-addon" required>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Categories</label>
-                                <div class="input-group has-validation mb-3">
-                                    <select name="cat_id" id="">
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Status</label>
-                                <div class="input-group has-validation mb-3">
-                                    <input type="text" class="form-control priceInput" id="product-price-input"
-                                        name="status" placeholder="Enter title" aria-label="title"
-                                        aria-describedby="product-price-addon" required>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Description</label>
-                                <div class="input-group has-validation mb-3">
-                                    <textarea class="form-control" name="description" placeholder="Must enter minimum of a 100 characters"
-                                        rows="3"></textarea>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Stock</label>
-                                <div class="input-group has-validation mb-3">
-                                    <input type="text" class="form-control priceInput" id="product-price-input"
-                                        name="total_stocks" placeholder="Enter title" aria-label="title"
-                                        aria-describedby="product-price-addon" required>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Tags</label>
-                                <div class="input-group has-validation mb-3">
-                                    <input type="text" class="form-control priceInput" id="product-price-input"
-                                        name="tags" placeholder="Enter title" aria-label="title"
-                                        aria-describedby="product-price-addon" required>
+                                    <textarea class="form-control" name="description" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
                                 </div>
 
                             </div>
                         </div>
 
-                        <button type="submit">Submit</button>
+                        <button style="border-radius: 8px" type="submit">Submit</button>
+
+                    </form>
 
                 </div>
                 <!-- container-fluid -->
@@ -3142,33 +3090,6 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
-    <script>
-        var $ = jQuery;
-        $('.submitAdd').click(function(e) {
-            e.preventDefault();
-
-            // console.log(stock);
-            let productData = {
-                title: $('.productTitle').val(),
-                stock: $('.stockInput').val(),
-                price: $('.priceInput').val(),
-                discount: $('.discountInput').val(),
-                orders: $('.ordersInput').val(),
-                selectCategory: $('.selectCategory').val(),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            };
-            // console.log(productData);
-            $.ajax({
-                url: 'addproduct',
-                type: 'POST',
-                data: productData,
-                success: function(response) {
-                    console.log(productData);
-                }
-            });
-
-        });
-    </script>
 </body>
 
 </html>

@@ -2276,13 +2276,37 @@
                         @csrf
                         <div class="col-lg-3 col-sm-6">
                             <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Title</label>
+                                <label class="form-label" for="product-price-input">Image</label>
                                 <div class="input-group has-validation mb-3">
-                                    <input type="text" class="form-control priceInput" id="product-price-input"
-                                        name="title" placeholder="Enter title" aria-label="title"
+                                    <input type="image" class="form-control priceInput" id="product-price-input"
+                                        name="title" placeholder="Enter title" aria-label="images"
                                         aria-describedby="product-price-addon" required>
                                 </div>
 
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-price-input">Color</label>
+                                <div class="input-group has-validation mb-3">
+                                    <select name="cat_id" id="">
+                                        {{-- @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach --}}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-price-input">Color</label>
+                                <div class="input-group has-validation mb-3">
+                                    <select name="cat_id" id="">
+                                        {{-- @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
+                                        @endforeach --}}
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <div class="col-lg-3 col-sm-6">
@@ -2292,19 +2316,6 @@
                                     <input type="text" class="form-control priceInput" id="product-price-input"
                                         name="product_code" placeholder="Enter title" aria-label="title"
                                         aria-describedby="product-price-addon" required>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <div class="mb-3">
-                                <label class="form-label" for="product-price-input">Categories</label>
-                                <div class="input-group has-validation mb-3">
-                                    <select name="cat_id" id="">
-                                        @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->title }}</option>
-                                        @endforeach
-                                    </select>
                                 </div>
 
                             </div>
@@ -3143,31 +3154,31 @@
     <!-- App js -->
     <script src="assets/js/app.js"></script>
     <script>
-        var $ = jQuery;
-        $('.submitAdd').click(function(e) {
-            e.preventDefault();
+        // var $ = jQuery;
+        // $('.submitAdd').click(function(e) {
+        //     e.preventDefault();
 
-            // console.log(stock);
-            let productData = {
-                title: $('.productTitle').val(),
-                stock: $('.stockInput').val(),
-                price: $('.priceInput').val(),
-                discount: $('.discountInput').val(),
-                orders: $('.ordersInput').val(),
-                selectCategory: $('.selectCategory').val(),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            };
-            // console.log(productData);
-            $.ajax({
-                url: 'addproduct',
-                type: 'POST',
-                data: productData,
-                success: function(response) {
-                    console.log(productData);
-                }
-            });
+        //     // console.log(stock);
+        //     let productData = {
+        //         title: $('.productTitle').val(),
+        //         stock: $('.stockInput').val(),
+        //         price: $('.priceInput').val(),
+        //         discount: $('.discountInput').val(),
+        //         orders: $('.ordersInput').val(),
+        //         selectCategory: $('.selectCategory').val(),
+        //         _token: $('meta[name="csrf-token"]').attr('content')
+        //     };
+        //     // console.log(productData);
+        //     $.ajax({
+        //         url: 'addproduct',
+        //         type: 'POST',
+        //         data: productData,
+        //         success: function(response) {
+        //             console.log(productData);
+        //         }
+        //     });
 
-        });
+        // });
     </script>
 </body>
 
