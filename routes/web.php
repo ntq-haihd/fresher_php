@@ -9,6 +9,8 @@ use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AddProductController;
 use App\Http\Controllers\AddCategoriesController;
+use App\Http\Controllers\AddVariablesController;
+use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderDetailController;
 
@@ -51,6 +53,12 @@ Route::post('addcategories', [AddCategoriesController::class, 'postAddCategories
 
 Route::get('addproduct', [AddProductController::class, 'getAddProduct']);
 Route::post('addproduct', [AddProductController::class, 'postAddProduct']);
+
+Route::get('productdetails', [ProductDetailsController::class, 'getProductDetails']);
+Route::post('productdetails', [ProductDetailsController::class, 'postProductDetails']);
+
+Route::get('addvariables', [AddVariablesController::class, 'getAddVariables']);
+Route::post('addvariables', [AddVariablesController::class, 'postAddVariables']);
 
 Route::get('orders', [OrdersController::class, 'getOrders']);
 

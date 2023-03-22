@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProductVariables extends Model
 {
     use HasFactory;
+
+    protected $fillable =[
+        'stocks',
+        'import_price'
+    ];
 }

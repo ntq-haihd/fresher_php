@@ -37,6 +37,11 @@ class ProductsRepository extends BaseRepository
         return Products::class;
     }
 
+    public function getAll(){
+
+        return Products::all();
+    }
+
 /**
  * Summary of create
  * @param mixed $attributes

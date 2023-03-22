@@ -23,7 +23,7 @@ class AddProductController extends Controller
 
         $categories = $this->categoriesService->getAll();
 
-        return view('addProduct', compact('categories'));
+        return view('addProduct2', compact('categories'));
     }
 
     public function postAddProduct(Request $req)

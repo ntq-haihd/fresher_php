@@ -26,4 +26,8 @@ class ProductsService
 
     }
 
+    public function getAll(){
+        return $this->productsRepository->getAll();
+    }
+
 }
