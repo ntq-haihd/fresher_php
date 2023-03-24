@@ -2597,7 +2597,7 @@
                                                 <div>
                                                     <a href="addproduct" class="btn btn-primary"
                                                         id="addproduct-btn"><i
-                                                            class="ri-add-line align-bottom me-1"></i> Add Product</a>
+                                                            class="ri-add-line align-bottom me-1"></i> Add Variables</a>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
@@ -2659,26 +2659,30 @@
                                             <thead class="thead-inverse">
                                                 <tr>
                                                     <th></th>
-                                                    <th>Title</th>
-                                                    <th>Product Code</th>
-                                                    <th>Thumbnail</th>
-                                                    <th>Description</th>
-                                                    <th>Total stock</th>
-                                                    <th></th>
+                                                    <th>Image</th>
+                                                    <th>Color</th>
+                                                    <th>Size</th>
+                                                    <th>Import Price</th>
+                                                    <th>Regular Price</th>
+                                                    <th>Sale Price</th>
+                                                    <th>Stock</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($products as $p)
+                                                {{-- @foreach ($products as $p) --}}
                                                 <tr>
-                                                    <td scope="row">{{ $p->id }}</td>
-                                                    <td>{{ $p->title }}</td>
-                                                    <td>{{ $p->product_code }}</td>
-                                                    <td>{{ $p->thumbnail }}</td>
-                                                    <td>{{ $p->description }}</td>
-                                                    <td>{{ $p->total_stocks }}</td>
-                                                    <td><a name="" id="" class="btn btn-primary" href="#" role="button">Details</a></td>
+                                                    <td scope="row"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><a name="" id="" class="btn btn-primary" href="#" role="button"></a></td>
                                                 </tr>
-                                                @endforeach
+                                                {{-- @endforeach --}}
                                             </tbody>
                                         </table>
 

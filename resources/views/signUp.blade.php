@@ -80,6 +80,51 @@
                                                 @enderror
                                             </div>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="first_name" class="form-label">First Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="first_name" id="first_name"
+                                                placeholder="Enter first name">
+                                            <div style="color: red">
+                                                @error('username')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="last_name" class="form-label">Last Name <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="last_name" id="last_name"
+                                                placeholder="Enter last name">
+                                            <div style="color: red">
+                                                @error('username')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
+                                            <div>
+                                                <input type="radio" id="male" name="gender" value="0" >
+                                                <label for="male">Male</label>
+                                            </div>
+                                            <div>
+                                                <input type="radio" id="female" name="gender" value="1" >
+                                                <label for="female">Female</label>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="phone" class="form-label">Phone Number <span
+                                                    class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" name="phone_number" id="phone"
+                                                placeholder="Enter phone number">
+                                            <div style="color: red">
+                                                @error('phone')
+                                                    {{ $message }}
+                                                @enderror
+                                            </div>
+                                        </div>
 
                                         <div class="mb-3">
                                             <label class="form-label" for="password-input">Password</label>
