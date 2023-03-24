@@ -23,10 +23,20 @@ class ProductsRepository extends BaseRepository
     //  * @param mixed $req
     //  * @return void
     //  */
-    public function create($req = [])
+    public function create($data = [])
     {
 
-        return Products::create($req->all());
+        return Products::create(
+            [
+                'title' => $data['title'],
+                'description' => $data['description'],
+                'status' => 1,
+                'slug' => Str::slug($data['title']),
+                'cat_id' => $data['categories'],
+                'tags' => $data['tags']
+            ]
+        );
+
 
     }
     /**
@@ -37,7 +47,8 @@ class ProductsRepository extends BaseRepository
         return Products::class;
     }
 
-    public function getAll(){
+    public function getAll()
+    {
 
         return Products::all();
     }

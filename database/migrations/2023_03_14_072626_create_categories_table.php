@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug')->unique();
-            $table->text('description');
-            $table->string('thumbnail');
+            $table->text('description')->nullable();
+            $table->string('thumbnail')->nullable();
             $table->integer('count_products')->nullable();
             $table->timestamps();
         });

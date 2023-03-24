@@ -16,27 +16,26 @@ use Illuminate\Support\Str;
  *
  * @package namespace App\Repositories;
  */
-class CategoriesRepository extends BaseRepository
+class AttributesRepository extends BaseRepository
 {
 
-    public function create($req = [])
+    /**
+     * Summary of create
+     * @param mixed $attributes
+     * @return void
+     */
+    public function create($attributes = [])
     {
-        return Categories::create(
-            [
-                'title' => $req['title'],
-                'slug' => Str::slug($req['title']),
-                'description' => $req['description']
-            ]
-        );
+
     }
 
     public function getAll()
-    {
-        return Categories::all();
-    }
+  {
+        return Attributes::all();
+  }
 
     public function getModel()
     {
-        return Categories::class;
+        return Attributes::class;
     }
 }

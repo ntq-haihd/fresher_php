@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('atrributes_variables', function (Blueprint $table) {
+        Schema::create('attributes_variables', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('attribute_value_id');
             $table->unsignedBigInteger('product_variable_id');
@@ -31,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('atrributes_variables');
+        Schema::dropIfExists('attributes_variables');
     }
 };

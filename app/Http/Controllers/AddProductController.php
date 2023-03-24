@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttributeValues;
 use App\Services\CategoriesService;
 use App\Services\ProductsService;
 use Illuminate\Http\Request;
@@ -29,7 +30,26 @@ class AddProductController extends Controller
     public function postAddProduct(Request $req)
     {
 
-        $product = $this->productsService->create($req);
+        // dd($req->all());
+        $this->productsService->create($req->all());
+
+        // return response()->json(['success' => true]);
+        // dd($this->productsService->create($dataProduct));
+        // $this->productsService->create($req->all());
+
+
+
+        return response()->json([
+            'success' => true,
+            'message' => 'ok'
+        ]);
+
+
+
+
+
+
+        // $product = $this->productsService->create($req);
 
     }
 }

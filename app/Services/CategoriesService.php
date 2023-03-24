@@ -19,13 +19,8 @@ class CategoriesService
 
     public function create(Request $req){
 
-        $attributes = [
-            'title' => $req->title,
-            'slug' => Str::slug($req->title),
-            'description' => $req->description
-        ];
 
-        return $this->categoriesRepository->create($attributes);
+        return $this->categoriesRepository->create($req);
 
     }
 

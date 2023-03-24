@@ -16,18 +16,18 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
-            $table->string('product_code');
+            $table->string('product_code')->nullable();
             $table->string('slug')->unique();
             $table->string('thumbnail')->nullable();
             $table->string('images')->nullable();
             $table->enum('status', [0, 1]);
             $table->text('description')->nullable();
             $table->unsignedBigInteger('cat_id');
-            $table->integer('count_views');
-            $table->unsignedBigInteger('shop_id');
-            $table->integer('total_orders');
-            $table->integer('total_stocks');
-            $table->string('reference_product');
+            $table->integer('count_views')->nullable();
+            $table->unsignedBigInteger('shop_id')->nullable();
+            $table->integer('total_orders')->nullable();
+            $table->integer('total_stocks')->nullable();
+            $table->string('reference_product')->nullable();
             $table->string('tags');
             $table->timestamps();
 

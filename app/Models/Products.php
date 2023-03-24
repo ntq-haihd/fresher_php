@@ -19,4 +19,5 @@ class Products extends Model
         'tags',
         'total_stocks'
     ];
+
 }

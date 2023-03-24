@@ -16,27 +16,27 @@ use Illuminate\Support\Str;
  *
  * @package namespace App\Repositories;
  */
-class CategoriesRepository extends BaseRepository
+class ProductVariablesRepository extends BaseRepository
 {
 
-    public function create($req = [])
+    public function create($attributes = [])
     {
-        return Categories::create(
+        return ProductVariables::create(
             [
-                'title' => $req['title'],
-                'slug' => Str::slug($req['title']),
-                'description' => $req['description']
+                'product_id' => $attributes['product_id'],
+                'stocks' => $attributes['stocks'],
+                'import_price' => $attributes['import_price']
             ]
         );
     }
 
     public function getAll()
-    {
-        return Categories::all();
-    }
+  {
+        return ProductVariables::all();
+  }
 
     public function getModel()
     {
-        return Categories::class;
+        return ProductVariables::class;
     }
 }

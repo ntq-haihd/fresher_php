@@ -10,6 +10,7 @@ class ProductVariables extends Model
     use HasFactory;
 
     protected $fillable =[
+        'product_id',
         'stocks',
         'import_price'
     ];

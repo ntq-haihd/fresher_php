@@ -2261,7 +2261,9 @@
                     </div>
                     <!-- end page title -->
 
-                    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate>
+                    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate
+                        method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="card">
@@ -2269,12 +2271,8 @@
                                         <div class="mb-3">
                                             <h5><label class="form-label" for="product-title-input">Product
                                                     Title</label></h5>
-                                            <input type="hidden" class="form-control title" id="formAction"
-                                                name="formAction" value="add">
-                                            <input type="text" class="form-control d-none"
-                                                id="product-id-input">
-                                            <input type="text" class="form-control" id="product-title-input"
-                                                value="" placeholder="Enter product title" required>
+                                            <input type="text" class="form-control " id="product-title-input"
+                                                name="title" placeholder="Enter product title" required>
                                             <div class="invalid-feedback">Please Enter a product title.</div>
                                         </div>
                                         <div>
@@ -2363,6 +2361,43 @@
                                     <div class="row gy-3 showSavedVariables">
 
                                     </div>
+                                    <div class="modal fade" id="editItemModal" tabindex="-1"
+                                        aria-labelledby="editItemModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="editColor" class="form-label">Color:</label>
+                                                        <input type="text" class="form-control" id="editColor">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editSize" class="form-label">Size:</label>
+                                                        <input type="text" class="form-control" id="editSize">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editPrice" class="form-label">Price:</label>
+                                                        <input type="text" class="form-control" id="editPrice">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editStock" class="form-label">Stock:</label>
+                                                        <input type="text" class="form-control" id="editStock">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button"
+                                                        class="btn btn-primary saveEdit">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div id="addAddressModal" class="modal fade zoomIn" tabindex="-1"
                                         aria-labelledby="addAddressModalLabel" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
@@ -2463,7 +2498,7 @@
                                                 class="float-end text-decoration-underline">Add
                                                 New</a>Select product category</p>
                                         <select class="form-select categories" id="choices-category-input"
-                                            name="choices-category-input cat_id" data-choices
+                                            name="cat_id" data-choices
                                             data-choices-search-false>
                                             @foreach ($categories as $category)
                                                 <option value="{{ $category->id }}">{{ $category->title }}
@@ -3369,7 +3404,7 @@
         var $ = jQuery;
         $('.saveButton').click(function(e) {
             $('.showSavedVariables').append('<div class="col-lg-4 col-sm-6 bigFormVariables">' +
-                '<div class="form-check card-radio " style="border: 1px solid #103764">' +
+                '<div class="form-check card-radio " style="border: 1px solid #103764; border-radius: 3px;">' +
                 '<div style="margin: 8px">' + 'Color: ' + '<span class="spanVariables color">' + $(
                     '.inputColor').val() +
                 '</span>' + '</div>' +
@@ -3384,46 +3419,82 @@
                 '</span>' + '</div>' +
                 '</div>' +
                 '<div class="d-flex flex-wrap p-2 py-1 bg-light rounded-bottom border mt-n1">' +
-                '<div><a href="#" class="d-block text-body p-1 px-2" data-bs-toggle="modal" data-bs-target="#addAddressModal"><i class="ri-pencil-fill text-muted align-bottom me-1"></i>Edit</a></div>' +
-                '<div><a href="#" class="d-block text-body p-1 px-2" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill text-muted align-bottom me-1"></i>Remove</a></div>' +
+                '<div><a href="#" class="d-block text-body p-1 px-2 editLink" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="ri-pencil-fill text-muted align-bottom me-1"></i>Edit</a></div>' +
+                '<div><a href="#" class="d-block text-body p-1 px-2 removeLink" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill text-muted align-bottom me-1"></i>Remove</a></div>' +
                 '</div>' +
                 '</div>'
             );
 
         });
+
         let dataVariables;
         let dataProduct;
 
+        $('.showSavedVariables').on('click', '.removeLink', function(e) {
+            e.preventDefault();
+            $(this).closest('.bigFormVariables').remove();
+        });
+        $('.showSavedVariables').on('click', '.editLink', function(e) {
+            e.preventDefault();
+            $(this).closest('.bigFormVariables').addClass('editing');
+        });
+        $('.showSavedVariables').on('click', '.editLink', function(e) {
+            e.preventDefault();
+            var parentDiv = $(this).closest('.bigFormVariables');
+            var color = parentDiv.find('.color').text();
+            var size = parentDiv.find('.size').text();
+            var price = parentDiv.find('.import_price').text();
+            var stocks = parentDiv.find('.stocks').text();
+        });
+        $('#editItemModal').on('click', '.saveEdit', function(e) {
+            e.preventDefault();
+            var parentDiv = $('.showSavedVariables').find('.bigFormVariables.editing');
+            parentDiv.find('.color').text($('#editColor').val());
+            parentDiv.find('.size').text($('#editSize').val());
+            parentDiv.find('.import_price').text($('#editPrice').val());
+            parentDiv.find('.stocks').text($('#editStock').val());
+            $('#editItemModal').modal('hide');
+        });
+
+
+
         $('.submitProduct').click(function(e) {
             e.preventDefault();
-
-             dataProduct = {
-                title: $('.title').val(),
+            dataProduct = {
+                title: $('#product-title-input').val(),
                 description: $('.description').val(),
                 status: $('.status').val(),
                 categories: $('.categories').val(),
                 tags: $('.tags').val(),
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
-
-
             var allDataVariables = [];
 
             $('.bigFormVariables').each(function() {
                 var dataVariables = {
                     color: $(this).find('.color').text(),
                     size: $(this).find('.size').text(),
-                    price: $(this).find('.import_price').text(),
+                    import_price: $(this).find('.import_price').text(),
                     stocks: $(this).find('.stocks').text(),
                     _token: $('meta[name="csrf-token"]').attr('content')
                 };
                 allDataVariables.push(dataVariables);
             });
 
-            let data = $.extend({}, dataProduct, allDataVariables);
-            console.log(data);
+            let dataAll = $.extend({}, dataProduct, {
+                variables: allDataVariables
+            });
+            console.log(dataAll);
+            $.ajax({
+                url: 'addproduct',
+                type: 'POST',
+                data: dataAll,
+                success: function(response) {
+                    // console.log(data);
+                }
+            })
 
-        })
+        });
     </script>
 </body>
 
