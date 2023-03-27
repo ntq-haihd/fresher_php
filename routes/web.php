@@ -2,15 +2,15 @@
 
 use App\Http\Controllers\DemoController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\logInController;
-use App\Http\Controllers\logUpController;
-use App\Http\Controllers\passwordController;
-use App\Http\Controllers\EmailController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckOutController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AddProductController;
+use App\Http\Controllers\AddCategoriesController;
+use App\Http\Controllers\AddVariablesController;
+use App\Http\Controllers\ProductDetailsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\OrderDetailController;
 
@@ -28,14 +28,14 @@ use App\Http\Controllers\OrderDetailController;
 
 Route::get('/', [DemoController::class, 'show'])->name('demo.show');
 
-Route::get('/loginForm', [logInController::class, 'getLogIn']);
-Route::post('/loginForm', [logInController::class, 'postLogIn']);
+Route::get('/loginForm', [UsersController::class, 'getLogIn']);
+Route::post('/loginForm', [UsersController::class, 'postLogIn']);
 
-Route::get('/signupForm', [logUpController::class, 'getLogUp']);
-Route::post('/signupForm', [logUpController::class, 'postLogUp']);
+Route::get('/signupForm', [UsersController::class, 'getSignUp']);
+Route::post('/signupForm', [UsersController::class, 'postSignUp']);
 
-Route::get('/forgetPassword', [passwordController::class, 'getForgetPassword']);
-Route::post('/forgetPassword', [passwordController::class, 'postForgetPassword']);
+Route::get('/forgetPassword', [UsersController::class, 'getForgetPassword']);
+Route::post('/forgetPassword', [UsersController::class, 'postForgetPassword']);
 
 Route::get('homepage', [HomeController::class, 'getHome']);
 Route::post('homepage', [HomeController::class, 'chooseVar']);
@@ -48,8 +48,17 @@ Route::post('checkout', [CheckOutController::class, 'postCheckOut']);
 
 Route::get('products', [ProductsController::class, 'getProducts']);
 
-Route::get('addproduct', [AddProductController::class, 'getAddProduct']);
+Route::get('addcategories', [AddCategoriesController::class, 'getAddCategories']);
+Route::post('addcategories', [AddCategoriesController::class, 'postAddCategories']);
+
+Route::get('addproduct', [AddProductController::class, 'getAddProduct'])->name('addproduct');
 Route::post('addproduct', [AddProductController::class, 'postAddProduct']);
+
+Route::get('productdetails', [ProductDetailsController::class, 'getProductDetails']);
+Route::post('productdetails', [ProductDetailsController::class, 'postProductDetails']);
+
+Route::get('addvariables', [AddVariablesController::class, 'getAddVariables']);
+Route::post('addvariables', [AddVariablesController::class, 'postAddVariables']);
 
 Route::get('orders', [OrdersController::class, 'getOrders']);
 
