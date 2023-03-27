@@ -25,6 +25,7 @@ class CategoriesRepository extends BaseRepository
             [
                 'title' => $req['title'],
                 'slug' => Str::slug($req['title']),
+                'thumbnail' => $req['thumbnail'],
                 'description' => $req['description']
             ]
         );

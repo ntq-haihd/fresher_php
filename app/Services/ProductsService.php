@@ -23,7 +23,6 @@ class ProductsService
     protected $attributesRepository;
     protected $productVariablesRepository;
     protected $attributesVariablesRepository;
-
     protected $categoriesRepository;
 
     public function __construct(CategoriesRepository $categoriesRepository, ProductsRepository $productsRepository, AttributesVariablesRepository $attributesVariablesRepository, AttributesRepository $attributesRepository, AttributeValuesRepository $attributeValuesRepository, ProductVariablesRepository $productVariablesRepository)
@@ -39,22 +38,11 @@ class ProductsService
 
     public function create(array $data)
     {
-        // $attributes = $this->attributesRepository->getAll();
-
-        // $attrbuteValues = $this->attributeValuesRepository->getAll();
-
-        // $products = $this->productsRepository->getAll();
-
-        // $productVariables = $this->productVariablesRepository->getAll();
-
-        // $attrbutesVariables = $this->attributesVariablesRepository->getAll();
-        // $categories = $this->categoriesRepository->getAll();
-
 
         $product = [
             'title' => $data['title'],
             'description' => $data['description'],
-            'status' => 1,
+            'status' => ($data['status'] == 'Published') ? '0' : '1',
             'slug' => Str::slug($data['title']),
             'categories' => $data['categories'],
             'tags' => $data['tags']
@@ -74,7 +62,6 @@ class ProductsService
             array_push($variables, $vars);
         }
 
-        $attrValues = [];
         $proVariables = [];
         $attrVariables = [];
 
@@ -104,8 +91,6 @@ class ProductsService
 
             $productVariables = $this->productVariablesRepository->create($proVariables);
 
-
-
             $attrVariables = [
                 'attribute_value_id' => $attrValuesIds,
                 'product_variable_id' => $productVariables['id']
@@ -120,7 +105,8 @@ class ProductsService
 
     public function getAll()
     {
-        return $this->attributesRepository->getAll();
+        return $this->productsRepository->getAll();
+
     }
 
 }

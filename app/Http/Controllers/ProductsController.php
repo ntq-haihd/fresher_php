@@ -4,15 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Services\ProductsService;
-
+use App\Services\ProductDetailsService;
 use Session;
 
 class ProductsController extends Controller
 {
 
     protected $productService;
-    public function __construct(ProductsService $productsService){
+    protected $productDetailsService;
+    public function __construct(ProductsService $productsService, ProductDetailsService $productDetailsService){
         $this->productService = $productsService;
+        $this->productDetailsService = $productDetailsService;
     }
 
 
@@ -21,7 +23,8 @@ class ProductsController extends Controller
         $product = Session::get('productData');
 
         $products = $this->productService->getAll();
+        $productDetails = $this->productDetailsService->getAll();
 
-        return view('products', compact('products'));
+        return view('products', compact('products', 'productDetails'));
     }
 }

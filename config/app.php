@@ -197,6 +197,10 @@ return [
 
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
+        CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class,
+
+
+
     ],
 
     /*
@@ -212,6 +216,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Cloudinary' => CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary::class,
     ])->toArray(),
+
+
+
 
 ];

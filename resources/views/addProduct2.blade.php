@@ -2435,6 +2435,55 @@
                                                             <input type="number" class="form-control inputStock"
                                                                 id="addaddress-Name" placeholder="Enter stock">
                                                         </div>
+                                                        <div class="card-body">
+                                                            <div>
+                                                                <h5 class="fs-14 mb-1">Thumbnail</h5>
+                                                                <p class="text-muted">Add Product Thumbnail Images.</p>
+
+                                                                <div class="dropzone">
+                                                                    <div class="fallback">
+                                                                        <input name="file" type="file" multiple="multiple">
+                                                                    </div>
+                                                                    <div class="dz-message needsclick">
+                                                                        <div class="mb-3">
+                                                                            <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                                                        </div>
+
+                                                                        <h5>Drop files here or click to upload.</h5>
+                                                                    </div>
+                                                                </div>
+
+                                                                <ul class="list-unstyled mb-0" id="dropzone-preview">
+                                                                    <li class="mt-2" id="dropzone-preview-list">
+                                                                        <!-- This is used as the file preview template -->
+                                                                        <div class="border rounded">
+                                                                            <div class="d-flex p-2">
+                                                                                <div class="flex-shrink-0 me-3">
+                                                                                    <div class="avatar-sm bg-light rounded">
+                                                                                        <img data-dz-thumbnail
+                                                                                            class="img-fluid rounded d-block"
+                                                                                            src="#" alt="Product-Image" />
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="flex-grow-1">
+                                                                                    <div class="pt-1">
+                                                                                        <h5 class="fs-14 mb-1" data-dz-name>&nbsp;</h5>
+                                                                                        <p class="fs-13 text-muted mb-0" data-dz-size></p>
+                                                                                        <strong class="error text-danger"
+                                                                                            data-dz-errormessage></strong>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="flex-shrink-0 ms-3">
+                                                                                    <button data-dz-remove type="button"
+                                                                                        class="btn btn-sm btn-danger">Delete</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </li>
+                                                                </ul>
+                                                                <!-- end dropzon-preview -->
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
@@ -2469,18 +2518,7 @@
                                             <select class="form-select status" id="choices-publish-status-input"
                                                 data-choices data-choices-search-false>
                                                 <option value="Published" selected>Published</option>
-                                                <option value="Scheduled">Scheduled</option>
                                                 <option value="Draft">Draft</option>
-                                            </select>
-                                        </div>
-
-                                        <div>
-                                            <label for="choices-publish-visibility-input"
-                                                class="form-label">Visibility</label>
-                                            <select class="form-select" id="choices-publish-visibility-input"
-                                                data-choices data-choices-search-false>
-                                                <option value="Public" selected>Public</option>
-                                                <option value="Hidden">Hidden</option>
                                             </select>
                                         </div>
                                     </div>
@@ -2494,7 +2532,7 @@
                                         <h5 class="card-title mb-0">Product Categories</h5>
                                     </div>
                                     <div class="card-body">
-                                        <p class="text-muted mb-2"> <a href="#"
+                                        <p class="text-muted mb-2"> <a href="{{ route('addproduct') }}"
                                                 class="float-end text-decoration-underline">Add
                                                 New</a>Select product category</p>
                                         <select class="form-select categories" id="choices-category-input"

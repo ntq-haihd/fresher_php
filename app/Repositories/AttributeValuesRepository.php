@@ -29,17 +29,6 @@ class AttributeValuesRepository extends BaseRepository
 
         );
     }
-    // public function create($attributes = [])
-    // {
-    //     $attributeValues = [];
-    //     foreach ($attributes as $attribute) {
-    //         $attributeValues[] = [
-    //             'attribute_id' => $attribute['attribute_id'],
-    //             'value' => $attribute['value']
-    //         ];
-    //     }
-    //     return AttributeValues::create($attributeValues);
-    // }
 
     public function getAll()
     {

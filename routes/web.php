@@ -51,7 +51,7 @@ Route::get('products', [ProductsController::class, 'getProducts']);
 Route::get('addcategories', [AddCategoriesController::class, 'getAddCategories']);
 Route::post('addcategories', [AddCategoriesController::class, 'postAddCategories']);
 
-Route::get('addproduct', [AddProductController::class, 'getAddProduct']);
+Route::get('addproduct', [AddProductController::class, 'getAddProduct'])->name('addproduct');
 Route::post('addproduct', [AddProductController::class, 'postAddProduct']);
 
 Route::get('productdetails', [ProductDetailsController::class, 'getProductDetails']);

@@ -7,6 +7,9 @@ use App\Models\Products;
 use App\Models\Categories;
 
 use Illuminate\Support\Str;
+// use Predis\Command\Traits\DB;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -30,7 +33,7 @@ class ProductsRepository extends BaseRepository
             [
                 'title' => $data['title'],
                 'description' => $data['description'],
-                'status' => 1,
+                'status' => $data['status'],
                 'slug' => Str::slug($data['title']),
                 'cat_id' => $data['categories'],
                 'tags' => $data['tags']
@@ -50,7 +53,14 @@ class ProductsRepository extends BaseRepository
     public function getAll()
     {
 
-        return Products::all();
+        return Products::join('categories', 'products.cat_id', '=', 'categories.id')
+                        ->join('product_variables', 'product_variables.product_id', '=', 'products.id')
+                        ->select('products.*', 'categories.title as cat_name',
+                                DB::raw('CONCAT(MIN(product_variables.import_price)," - ", MAX(product_variables.import_price)) as price_range'),
+                                DB::raw('SUM(product_variables.stocks) as total_stock'))
+                        ->groupBy('products.id')
+                        ->get();
+
     }
 
 /**

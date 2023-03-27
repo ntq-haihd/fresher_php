@@ -30,26 +30,13 @@ class AddProductController extends Controller
     public function postAddProduct(Request $req)
     {
 
-        // dd($req->all());
+
         $this->productsService->create($req->all());
-
-        // return response()->json(['success' => true]);
-        // dd($this->productsService->create($dataProduct));
-        // $this->productsService->create($req->all());
-
-
 
         return response()->json([
             'success' => true,
             'message' => 'ok'
         ]);
-
-
-
-
-
-
-        // $product = $this->productsService->create($req);
 
     }
 }

@@ -31,12 +31,17 @@ class ProductVariablesRepository extends BaseRepository
     }
 
     public function getAll()
-  {
-        return ProductVariables::all();
-  }
+    {
+        return Products::join('product_variables', 'products.id', '=', 'product_variables.product_id')
+            ->join('attributes_variables', 'product_variables.id', '=', 'attributes_variables.id')
+            ->join('attribute_values', 'attribute_values.id', '=', 'attributes_variables.id')
+            ->select('product_variables.*', 'attribute_values.value as value')
+            // ->groupBy('products.id')
+            ->get();
+    }
 
     public function getModel()
     {
-        return ProductVariables::class;
+        return Products::class;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Services\CategoriesService;
 use App\Services\ProductsService;
+use App\Services\ProductDetailsService;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\UsersRepository;
 use App\Repositories\UsersInterface;
@@ -31,6 +32,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BaseRepository::class, ProductVariablesRepository::class);
         $this->app->bind(CategoriesService::class);
         $this->app->bind(ProductsService::class);
+        $this->app->bind(ProductDetailsService::class);
 
 
     }
