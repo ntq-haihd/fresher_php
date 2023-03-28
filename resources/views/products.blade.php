@@ -17,6 +17,8 @@
 
     <!-- gridjs css -->
     <link rel="stylesheet" href="assets/libs/gridjs/theme/mermaid.min.css">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
+
 
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
@@ -2654,97 +2656,105 @@
                                         </div>
                                     </div>
                                     <!-- end card header -->
-                                    <div class="card-body">
+                                    <form action="" method="POST">
+                                        @csrf
+                                        <div class="card-body">
 
-                                        <table class="table table-striped table-inverse table-responsive">
-                                            <thead class="thead-inverse">
-                                                <tr>
-                                                    <th></th>
-                                                    <th>Title</th>
-                                                    <th>Category</th>
-                                                    <th>Price</th>
-                                                    <th>Total Stock</th>
-                                                    <th>Thumbnail</th>
-                                                    <th>Description</th>
-
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($products as $p)
+                                            <table class="table table-striped table-inverse table-responsive">
+                                                <thead class="thead-inverse">
                                                     <tr>
-                                                        <td scope="row">{{ $p->id }}</td>
-                                                        <td>{{ $p->title }}</td>
-                                                        <td>{{ $p->cat_name }}</td>
-                                                        <td>{{ $p->price_range }}</td>
-                                                        <td>{{ $p->total_stock }}</td>
-                                                        <td>{{ $p->thumbnail }}</td>
-                                                        <td>{{ $p->description }}</td>
+                                                        <th></th>
+                                                        <th>Title</th>
+                                                        <th>Category</th>
+                                                        <th>Price</th>
+                                                        <th>Total Stock</th>
+                                                        <th>Thumbnail</th>
+                                                        <th>Description</th>
 
-                                                        <td><button type="button"
-                                                                class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#addAddressModal"
-                                                                {{ $p->id }}
-                                                                >
-                                                                Details</button></td>
+                                                        <th></th>
                                                     </tr>
-                                                @endforeach
+                                                </thead>
+                                                <tbody>
+                                                    @foreach ($products as $p)
+                                                        <tr>
+                                                            <td scope="row" name="productID">{{ $p->id }}
+                                                            </td>
+                                                            <td>{{ $p->title }}</td>
+                                                            <td>{{ $p->cat_name }}</td>
+                                                            <td>{{ $p->price_range }}</td>
+                                                            <td>{{ $p->total_stock }}</td>
+                                                            <td>{{ $p->thumbnail }}</td>
+                                                            <td>{{ $p->description }}</td>
 
-                                            </tbody>
-                                        </table>
+                                                            <td><button type="button"
+                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#addAddressModal"
+                                                                    id="{{ $p->id }}">
+                                                                    Details</button></td>
+                                                        </tr>
+                                                    @endforeach
 
-                                    </div>
-                                    @foreach ($products as $pr)
-                                        <div id="addAddressModal"{{ $pr->id }} class="modal fade zoomIn"
-                                            tabindex="-1" aria-labelledby="addAddressModalLabel"
-                                            aria-hidden="true">
-                                            <div class="modal-dialog modal-dialog-centered">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="addAddressModalLabel">Product
-                                                            Details</h5>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <table class="table table-striped table-inverse table-responsive">
-                                                        <thead class="thead-inverse">
-                                                            <tr>
-                                                                <th>Color</th>
-                                                                <th>Size</th>
-                                                                <th>Price</th>
-                                                                <th>Stock</th>
-                                                                <th></th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($productDetails as $p)
+                                                </tbody>
+                                            </table>
+
+                                        </div>
+                                        @foreach ($products as $pr)
+                                            <div id="addAddressModal" class="modal fade zoomIn" tabindex="-1"
+                                                aria-labelledby="addAddressModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="addAddressModalLabel">
+                                                                Product
+                                                                Details</h5>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <table
+                                                            class="table table-striped table-inverse table-responsive">
+                                                            <thead class="thead-inverse">
                                                                 <tr>
-                                                                    <td scope="row">{{ $p->value }}</td>
-                                                                    <td>{{ $p->value }}</td>
-                                                                    <td>{{ $p->import_price }}</td>
-                                                                    <td>{{ $p->stocks }}</td>
-                                                                    <td><button type="button"
-                                                                            class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#addAddressModal">
-                                                                            Details</button></td>
+                                                                    <th>Color</th>
+                                                                    <th>Size</th>
+                                                                    <th>Price</th>
+                                                                    <th>Stock</th>
+                                                                    <th></th>
                                                                 </tr>
-                                                            @endforeach
+                                                            </thead>
+                                                            <tbody>
 
-                                                        </tbody>
-                                                    </table>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-light"
-                                                            data-bs-dismiss="modal">Close</button>
-                                                        <button type="button"
-                                                            class="btn btn-success saveButton">Save</button>
-                                                    </div>
-                                                </div><!-- /.modal-content -->
-                                            </div><!-- /.modal-dialog -->
-                                        </div><!-- /.modal -->
-                                    @endforeach
-                                    <!-- end card body -->
+                                                                @foreach ($productDetails as $p)
+                                                                    @if ($pr->id == $p->product_id)
+                                                                        <tr>
+                                                                            <td scope="row">{{ $p->valueColor }}
+                                                                            </td>
+                                                                            <td>{{ $p->valueSize }}</td>
+                                                                            {{-- <td>{{ $p->import_price }}</td>
+                                                                            <td>{{ $p->stocks }}</td> --}}
+                                                                            <td><button type="submit"
+                                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
+                                                                                    data-bs-toggle="modal"
+                                                                                    data-bs-target="#addAddressModal">
+                                                                                    Details</button></td>
+                                                                        </tr>
+                                                                    @endif
+                                                                @endforeach
+
+                                                            </tbody>
+                                                        </table>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-light"
+                                                                data-bs-dismiss="modal">Close</button>
+                                                            <button type="button"
+                                                                class="btn btn-success saveButton">Save</button>
+                                                        </div>
+                                                    </div><!-- /.modal-content -->
+                                                </div><!-- /.modal-dialog -->
+                                            </div><!-- /.modal -->
+                                        @endforeach
+                                        <!-- end card body -->
+                                    </form>
                                 </div>
                                 <!-- end card -->
                             </div>
@@ -3573,9 +3583,23 @@
     <script>
         var $ = jQuery;
 
-        $('showDetails').click(function() {
+        $('.showDetails').click(function() {
             $('#editItemModal').addClass('show');
 
+            let data = {
+                id: $(this).attr('id'),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            }
+            // console.log(id);
+            $.ajax({
+                url: 'products',
+                type: 'POST',
+                data: data,
+                // headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+                success: function(response) {
+                    // console.log(data);
+                }
+            })
         })
     </script>
 </body>

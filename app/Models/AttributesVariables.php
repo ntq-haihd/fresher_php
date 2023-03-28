@@ -13,4 +13,7 @@ class AttributesVariables extends Model
         'attribute_value_id',
         'product_variable_id'
     ];
+
+    
+
 }

@@ -39,4 +39,9 @@ class ProductDetailsService
         return $this->productVariablesRepository->getAll();
     }
 
+    public function find($id){
+
+        return $this->productVariablesRepository->find($id);
+    }
+
 }

@@ -35,24 +35,9 @@ class AddCategoriesController extends Controller
     public function postAddCategories(Request $request)
     {
 
-
-        // dd(Cloudinary::upload($request->file('thumbnail')->getRealPath())->getSecurePath());
-        // $response = Cloudinary::upload(($request->thumbnail)->getRealPath())->getSecurePath();
-        // $file = $request->thumbnail;
-
-        // $response = Cloudinary::upload($file->getRealPath())->getSecurePath();
-
-
-
         $data = $request->all();
 
-
-        dd($data);
-        // Cloudinary::upload($image_name, null);
-
-        // dd($response);
-
-        // $this->categoriesService->create($request);
+        $this->categoriesService->create($data);
 
         return redirect('addproduct');
     }

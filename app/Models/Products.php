@@ -20,4 +20,9 @@ class Products extends Model
         'total_stocks'
     ];
 
+    public function productVariables()
+    {
+        return $this->hasMany(ProductVariables::class, 'product_id');
+    }
+
 }

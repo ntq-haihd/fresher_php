@@ -10,6 +10,8 @@ use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
+use SplFileInfo;
+
 
 
 
@@ -24,20 +26,21 @@ class CategoriesService
         $this->categoriesRepository = $categoriesRepository;
     }
 
-    public function create(Request $req)
+    public function create($req = [])
     {
 
-        // dd('req->thumbnail');
-        // $req->thumbnail = Cloudinary::upload(($req->thumbnail)->getRealPath())->getSecurePath();
-        // dd($req->thumbnail);
+        $thumbnail = Cloudinary::upload($req['image']->getRealPath())->getSecurePath();
+        $title = $req['title'];
+        $description = $req['description'];
 
-        // Upload thumbnail to Cloudinary
-        // $thumbnail_url = Cloudinary::upload($req['thumbnail']->getRealPath())->getSecurePath();
-        // $response = Cloudinary::upload($req->file('thumbnail')->getRealPath());
+        $dataAll = [
+            'title' => $title,
+            'description' => $description,
+            'thumbnail' => $thumbnail,
+            'slug' => Str::slug($title)
+        ];
 
-
-
-        return $this->categoriesRepository->create($req);
+        return $this->categoriesRepository->create($dataAll);
 
     }
 

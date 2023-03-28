@@ -73,7 +73,7 @@
                         </button>
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-md-block">
+                        {{-- <form class="app-search d-none d-md-block">
                             <div class="position-relative">
                                 <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
                                     id="search-options" value="">
@@ -164,7 +164,7 @@
                                         Results <i class="ri-arrow-right-line ms-1"></i></a>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
 
                     <div class="d-flex align-items-center">
@@ -177,7 +177,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                                 aria-labelledby="page-header-search-dropdown">
-                                <form class="p-3">
+                                {{-- <form class="p-3">
                                     <div class="form-group m-0">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search ..."
@@ -186,7 +186,7 @@
                                                     class="mdi mdi-magnify"></i></button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                             </div>
                         </div>
 
@@ -2272,7 +2272,7 @@
                     </div>
                     <!-- end page title -->
 
-                    <form id="createproduct-form" class="needs-validation formSubmit" method="POST">
+                    <form id="formSubmit" class="needs-validation" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="col-lg-3 col-sm-6">
@@ -2300,10 +2300,11 @@
                             <div>
                                 <h5 class="fs-14 mb-1">Thumbnail</h5>
                                 <p class="text-muted">Add Product Thumbnail Images.</p>
+                                <input name="image" class="thumbnail" type="file" multiple="multiple">
 
-                                <div class="dropzone">
+                                {{-- <div class="dropzone">
                                     <div class="fallback">
-                                        <input name="image" class="thumbnail" type="file" multiple="multiple">
+
                                     </div>
                                     <div class="dz-message needsclick">
                                         <div class="mb-3">
@@ -2312,7 +2313,7 @@
 
                                         <h5>Drop files here or click to upload.</h5>
                                     </div>
-                                </div>
+                                </div> --}}
 
                                 <ul class="list-unstyled mb-0" id="dropzone-preview">
                                     <li class="mt-2" id="dropzone-preview-list">
@@ -3139,22 +3140,29 @@
 
     <script>
         var $ = jQuery;
-        console.log('asdasd');
 
-        $('.formSubmit').submit(function(e) {
+        $('#formSubmit').submit(function(e) {
             e.preventDefault();
 
+            let image = $('.thumbnail').val();
+            let title = $('.title').val();
+            let description = $('.description').val();
+
+
             var formData = new FormData(this);
-            console.log(formData);
+            formData.append('image', image);
+            formData.append('title', title);
+            formData.append('description', description);
+            // console.log(formData);
 
             $.ajax({
                 url: 'addcategories',
                 type: 'POST',
-                data: formData.get('image'),
+                data: formData,
                 cache: false,
                 contentType: false,
                 processData: false,
-                // headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+                headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(response) {
                     console.log(formData);
 

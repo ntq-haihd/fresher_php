@@ -47,6 +47,7 @@ Route::get('checkout', [CheckOutController::class, 'getCheckOut']);
 Route::post('checkout', [CheckOutController::class, 'postCheckOut']);
 
 Route::get('products', [ProductsController::class, 'getProducts']);
+Route::post('products', [ProductsController::class, 'postProducts']);
 
 Route::get('addcategories', [AddCategoriesController::class, 'getAddCategories']);
 Route::post('addcategories', [AddCategoriesController::class, 'postAddCategories']);

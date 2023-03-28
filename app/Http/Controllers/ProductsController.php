@@ -22,9 +22,20 @@ class ProductsController extends Controller
 
         $product = Session::get('productData');
 
+
+
         $products = $this->productService->getAll();
         $productDetails = $this->productDetailsService->getAll();
+        // dd($productDetails);
 
         return view('products', compact('products', 'productDetails'));
+    }
+
+    public function postProducts(Request $req){
+
+        $id = $req->productID;
+        // dd($id);
+        return $this->productDetailsService->find($id);
+
     }
 }
