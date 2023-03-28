@@ -60,17 +60,17 @@
                                 </div>
 
                                 <div class="alert alert-borderless alert-warning text-center mb-2 mx-2" role="alert">
-                                    Enter your email and instructions will be sent to you!
+                                    Enter your username and instructions will be sent to your mail!
                                 </div>
                                 <div class="p-2">
-                                    <form method="POST">
+                                    <form action="forgetPassword" method="POST">
                                         @csrf
                                         <div class="mb-4">
-                                            <label class="form-label">Email</label>
-                                            <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email">
+                                            <label class="form-label">Username</label>
+                                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username">
                                         </div>
                                         <div style="color: red">
-                                            @error('email')
+                                            @error('username')
                                                 {{ $message }}
                                             @enderror
                                             @if(session('status'))

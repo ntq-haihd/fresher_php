@@ -17,8 +17,6 @@
 
     <!-- gridjs css -->
     <link rel="stylesheet" href="assets/libs/gridjs/theme/mermaid.min.css">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
 
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
@@ -30,7 +28,6 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 </head>
 
@@ -2600,7 +2597,7 @@
                                                 <div>
                                                     <a href="addproduct" class="btn btn-primary"
                                                         id="addproduct-btn"><i
-                                                            class="ri-add-line align-bottom me-1"></i> Add Product</a>
+                                                            class="ri-add-line align-bottom me-1"></i> Add Variables</a>
                                                 </div>
                                             </div>
                                             <div class="col-sm">
@@ -2656,105 +2653,41 @@
                                         </div>
                                     </div>
                                     <!-- end card header -->
-                                    <form action="" method="POST">
-                                        @csrf
-                                        <div class="card-body">
+                                    <div class="card-body">
 
-                                            <table class="table table-striped table-inverse table-responsive">
-                                                <thead class="thead-inverse">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Title</th>
-                                                        <th>Category</th>
-                                                        <th>Price</th>
-                                                        <th>Total Stock</th>
-                                                        <th>Thumbnail</th>
-                                                        <th>Description</th>
+                                        <table class="table table-striped table-inverse table-responsive">
+                                            <thead class="thead-inverse">
+                                                <tr>
+                                                    <th></th>
+                                                    <th>Image</th>
+                                                    <th>Color</th>
+                                                    <th>Size</th>
+                                                    <th>Import Price</th>
+                                                    <th>Regular Price</th>
+                                                    <th>Sale Price</th>
+                                                    <th>Stock</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {{-- @foreach ($products as $p) --}}
+                                                <tr>
+                                                    <td scope="row"></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td><a name="" id="" class="btn btn-primary" href="#" role="button"></a></td>
+                                                </tr>
+                                                {{-- @endforeach --}}
+                                            </tbody>
+                                        </table>
 
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($products as $p)
-                                                        <tr>
-                                                            <td scope="row" name="productID">{{ $p->id }}
-                                                            </td>
-                                                            <td>{{ $p->title }}</td>
-                                                            <td>{{ $p->cat_name }}</td>
-                                                            <td>{{ $p->price_range }}</td>
-                                                            <td>{{ $p->total_stock }}</td>
-                                                            <td>{{ $p->thumbnail }}</td>
-                                                            <td>{{ $p->description }}</td>
-
-                                                            <td><button type="button"
-                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#addAddressModal"
-                                                                    id="{{ $p->id }}">
-                                                                    Details</button></td>
-                                                        </tr>
-                                                    @endforeach
-
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                        @foreach ($products as $pr)
-                                            <div id="addAddressModal" class="modal fade zoomIn" tabindex="-1"
-                                                aria-labelledby="addAddressModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="addAddressModalLabel">
-                                                                Product
-                                                                Details</h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <table
-                                                            class="table table-striped table-inverse table-responsive">
-                                                            <thead class="thead-inverse">
-                                                                <tr>
-                                                                    <th>Color</th>
-                                                                    <th>Size</th>
-                                                                    <th>Price</th>
-                                                                    <th>Stock</th>
-                                                                    <th></th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                                @foreach ($productDetails as $p)
-                                                                    @if ($pr->id == $p->product_id)
-                                                                        <tr>
-                                                                            <td scope="row">{{ $p->valueColor }}
-                                                                            </td>
-                                                                            <td>{{ $p->valueSize }}</td>
-                                                                            {{-- <td>{{ $p->import_price }}</td>
-                                                                            <td>{{ $p->stocks }}</td> --}}
-                                                                            <td><button type="submit"
-                                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#addAddressModal">
-                                                                                    Details</button></td>
-                                                                        </tr>
-                                                                    @endif
-                                                                @endforeach
-
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="button"
-                                                                class="btn btn-success saveButton">Save</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                        @endforeach
-                                        <!-- end card body -->
-                                    </form>
+                                    </div>
+                                    <!-- end card body -->
                                 </div>
                                 <!-- end card -->
                             </div>
@@ -3580,28 +3513,6 @@
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
-    <script>
-        var $ = jQuery;
-
-        $('.showDetails').click(function() {
-            $('#editItemModal').addClass('show');
-
-            let data = {
-                id: $(this).attr('id'),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            }
-            // console.log(id);
-            $.ajax({
-                url: 'products',
-                type: 'POST',
-                data: data,
-                // headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
-                success: function(response) {
-                    // console.log(data);
-                }
-            })
-        })
-    </script>
 </body>
 
 </html>

@@ -5,20 +5,17 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Products | Velzon - Admin & Dashboard Template</title>
+    <title>Create Product | Velzon - Admin & Dashboard Template</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
+
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-    <!-- nouisliderribute css -->
-    <link rel="stylesheet" href="assets/libs/nouislider/nouislider.min.css">
-
-    <!-- gridjs css -->
-    <link rel="stylesheet" href="assets/libs/gridjs/theme/mermaid.min.css">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+    <!-- Plugins css -->
+    <link href="assets/libs/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
 
     <!-- Layout config Js -->
     <script src="assets/js/layout.js"></script>
@@ -30,6 +27,7 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    {{-- jquery lib --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 
 </head>
@@ -75,7 +73,7 @@
                         </button>
 
                         <!-- App Search-->
-                        <form class="app-search d-none d-md-block">
+                        {{-- <form class="app-search d-none d-md-block">
                             <div class="position-relative">
                                 <input type="text" class="form-control" placeholder="Search..." autocomplete="off"
                                     id="search-options" value="">
@@ -166,7 +164,7 @@
                                         Results <i class="ri-arrow-right-line ms-1"></i></a>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
                     </div>
 
                     <div class="d-flex align-items-center">
@@ -179,7 +177,7 @@
                             </button>
                             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end p-0"
                                 aria-labelledby="page-header-search-dropdown">
-                                <form class="p-3">
+                                {{-- <form class="p-3">
                                     <div class="form-group m-0">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search ..."
@@ -188,7 +186,7 @@
                                                     class="mdi mdi-magnify"></i></button>
                                         </div>
                                     </div>
-                                </form>
+                                </form> --}}
                             </div>
                         </div>
 
@@ -2259,13 +2257,13 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                                <h4 class="mb-sm-0">Products</h4>
+                                <h4 class="mb-sm-0">Create Categories</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
                                         <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a>
                                         </li>
-                                        <li class="breadcrumb-item active">Products</li>
+                                        <li class="breadcrumb-item active">Create Product</li>
                                     </ol>
                                 </div>
 
@@ -2274,494 +2272,83 @@
                     </div>
                     <!-- end page title -->
 
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    <div class="d-flex mb-3">
-                                        <div class="flex-grow-1">
-                                            <h5 class="fs-16">Filters</h5>
-                                        </div>
-                                        <div class="flex-shrink-0">
-                                            <a href="#" class="text-decoration-underline"
-                                                id="clearall">Clear All</a>
-                                        </div>
-                                    </div>
+                    <form id="formSubmit" class="needs-validation" method="POST" enctype="multipart/form-data">
+                        @csrf
 
-                                    <div class="filter-choices-input">
-                                        <input class="form-control" data-choices data-choices-removeItem
-                                            type="text" id="filter-choices-input" value="T-Shirts" />
-                                    </div>
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-price-input">Title</label>
+                                <div class="input-group has-validation mb-3">
+                                    <input type="text" class="form-control title" id="product-price-input"
+                                        name="title" placeholder="Enter title" aria-label="title"
+                                        aria-describedby="product-price-addon" required>
                                 </div>
 
-                                <div class="accordion accordion-flush filter-accordion">
-
-                                    <div class="card-body border-bottom">
-                                        <div>
-                                            <p class="text-muted text-uppercase fs-12 fw-medium mb-2">Products</p>
-                                            <ul class="list-unstyled mb-0 filter-list">
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Grocery</h5>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Fashion</h5>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="badge bg-light text-muted">5</span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Watches</h5>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Electronics</h5>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="badge bg-light text-muted">5</span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Furniture</h5>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="badge bg-light text-muted">6</span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Automotive Accessories
-                                                            </h5>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Appliances</h5>
-                                                        </div>
-                                                        <div class="flex-shrink-0 ms-2">
-                                                            <span class="badge bg-light text-muted">7</span>
-                                                        </div>
-                                                    </a>
-                                                </li>
-
-                                                <li>
-                                                    <a href="#" class="d-flex py-1 align-items-center">
-                                                        <div class="flex-grow-1">
-                                                            <h5 class="fs-13 mb-0 listname">Kids</h5>
-                                                        </div>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-body border-bottom">
-                                        <p class="text-muted text-uppercase fs-12 fw-medium mb-4">Price</p>
-
-                                        <div id="product-price-range" data-slider-color="primary"></div>
-                                        <div class="formCost d-flex gap-2 align-items-center mt-3">
-                                            <input class="form-control form-control-sm" type="text"
-                                                id="minCost" value="0" /> <span
-                                                class="fw-semibold text-muted">to</span> <input
-                                                class="form-control form-control-sm" type="text" id="maxCost"
-                                                value="1000" />
-                                        </div>
-                                    </div>
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingBrands">
-                                            <button class="accordion-button bg-transparent shadow-none"
-                                                type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseBrands" aria-expanded="true"
-                                                aria-controls="flush-collapseBrands">
-                                                <span class="text-muted text-uppercase fs-12 fw-medium">Brands</span>
-                                                <span
-                                                    class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                            </button>
-                                        </h2>
-
-                                        <div id="flush-collapseBrands" class="accordion-collapse collapse show"
-                                            aria-labelledby="flush-headingBrands">
-                                            <div class="accordion-body text-body pt-0">
-                                                <div class="search-box search-box-sm">
-                                                    <input type="text" class="form-control bg-light border-0"
-                                                        id="searchBrandsList" placeholder="Search Brands...">
-                                                    <i class="ri-search-line search-icon"></i>
-                                                </div>
-                                                <div class="d-flex flex-column gap-2 mt-3 filter-check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="Boat" id="productBrandRadio5" checked>
-                                                        <label class="form-check-label"
-                                                            for="productBrandRadio5">Boat</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="OnePlus" id="productBrandRadio4">
-                                                        <label class="form-check-label"
-                                                            for="productBrandRadio4">OnePlus</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="Realme" id="productBrandRadio3">
-                                                        <label class="form-check-label"
-                                                            for="productBrandRadio3">Realme</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="Sony" id="productBrandRadio2">
-                                                        <label class="form-check-label"
-                                                            for="productBrandRadio2">Sony</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="JBL" id="productBrandRadio1" checked>
-                                                        <label class="form-check-label"
-                                                            for="productBrandRadio1">JBL</label>
-                                                    </div>
-
-                                                    <div>
-                                                        <button type="button"
-                                                            class="btn btn-link text-decoration-none text-uppercase fw-medium p-0">1,235
-                                                            More</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end accordion-item -->
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingDiscount">
-                                            <button class="accordion-button bg-transparent shadow-none collapsed"
-                                                type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseDiscount" aria-expanded="true"
-                                                aria-controls="flush-collapseDiscount">
-                                                <span
-                                                    class="text-muted text-uppercase fs-12 fw-medium">Discount</span>
-                                                <span
-                                                    class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                            </button>
-                                        </h2>
-                                        <div id="flush-collapseDiscount" class="accordion-collapse collapse"
-                                            aria-labelledby="flush-headingDiscount">
-                                            <div class="accordion-body text-body pt-1">
-                                                <div class="d-flex flex-column gap-2 filter-check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="50% or more" id="productdiscountRadio6">
-                                                        <label class="form-check-label"
-                                                            for="productdiscountRadio6">50% or more</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="40% or more" id="productdiscountRadio5">
-                                                        <label class="form-check-label"
-                                                            for="productdiscountRadio5">40% or more</label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="30% or more" id="productdiscountRadio4">
-                                                        <label class="form-check-label" for="productdiscountRadio4">
-                                                            30% or more
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="20% or more" id="productdiscountRadio3" checked>
-                                                        <label class="form-check-label" for="productdiscountRadio3">
-                                                            20% or more
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="10% or more" id="productdiscountRadio2">
-                                                        <label class="form-check-label" for="productdiscountRadio2">
-                                                            10% or more
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="Less than 10%" id="productdiscountRadio1">
-                                                        <label class="form-check-label" for="productdiscountRadio1">
-                                                            Less than 10%
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end accordion-item -->
-
-                                    <div class="accordion-item">
-                                        <h2 class="accordion-header" id="flush-headingRating">
-                                            <button class="accordion-button bg-transparent shadow-none collapsed"
-                                                type="button" data-bs-toggle="collapse"
-                                                data-bs-target="#flush-collapseRating" aria-expanded="false"
-                                                aria-controls="flush-collapseRating">
-                                                <span class="text-muted text-uppercase fs-12 fw-medium">Rating</span>
-                                                <span
-                                                    class="badge bg-success rounded-pill align-middle ms-1 filter-badge"></span>
-                                            </button>
-                                        </h2>
-
-                                        <div id="flush-collapseRating" class="accordion-collapse collapse"
-                                            aria-labelledby="flush-headingRating">
-                                            <div class="accordion-body text-body">
-                                                <div class="d-flex flex-column gap-2 filter-check">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="4 & Above Star" id="productratingRadio4" checked>
-                                                        <label class="form-check-label" for="productratingRadio4">
-                                                            <span class="text-muted">
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                            </span> 4 & Above
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="3 & Above Star" id="productratingRadio3">
-                                                        <label class="form-check-label" for="productratingRadio3">
-                                                            <span class="text-muted">
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                            </span> 3 & Above
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="2 & Above Star" id="productratingRadio2">
-                                                        <label class="form-check-label" for="productratingRadio2">
-                                                            <span class="text-muted">
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                            </span> 2 & Above
-                                                        </label>
-                                                    </div>
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            value="1 Star" id="productratingRadio1">
-                                                        <label class="form-check-label" for="productratingRadio1">
-                                                            <span class="text-muted">
-                                                                <i class="mdi mdi-star text-warning"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                                <i class="mdi mdi-star"></i>
-                                                            </span> 1
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- end accordion-item -->
-                                </div>
                             </div>
-                            <!-- end card -->
                         </div>
-                        <!-- end col -->
+                        <div class="col-lg-3 col-sm-6">
+                            <div class="mb-3">
+                                <label class="form-label" for="product-price-input">Description</label>
+                                <div class="input-group has-validation mb-3">
+                                    <textarea class="form-control description" name="description" placeholder="Must enter minimum of a 100 characters"
+                                        rows="3"></textarea>
+                                </div>
 
-                        <div class="col-xl-9 col-lg-8">
+                            </div>
+                        </div>
+                        <div class="card-body">
                             <div>
-                                <div class="card">
-                                    <div class="card-header border-0">
-                                        <div class="row g-4">
-                                            <div class="col-sm-auto">
-                                                <div>
-                                                    <a href="addproduct" class="btn btn-primary"
-                                                        id="addproduct-btn"><i
-                                                            class="ri-add-line align-bottom me-1"></i> Add Product</a>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm">
-                                                <div class="d-flex justify-content-sm-end">
-                                                    <div class="search-box ms-2">
-                                                        <input type="text" class="form-control"
-                                                            id="searchProductList" placeholder="Search Products...">
-                                                        <i class="ri-search-line search-icon"></i>
+                                <h5 class="fs-14 mb-1">Thumbnail</h5>
+                                <p class="text-muted">Add Product Thumbnail Images.</p>
+                                <input name="image" class="thumbnail" type="file" multiple="multiple">
+
+                                {{-- <div class="dropzone">
+                                    <div class="fallback">
+
+                                    </div>
+                                    <div class="dz-message needsclick">
+                                        <div class="mb-3">
+                                            <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
+                                        </div>
+
+                                        <h5>Drop files here or click to upload.</h5>
+                                    </div>
+                                </div> --}}
+
+                                <ul class="list-unstyled mb-0" id="dropzone-preview">
+                                    <li class="mt-2" id="dropzone-preview-list">
+                                        <!-- This is used as the file preview template -->
+                                        <div class="border rounded">
+                                            <div class="d-flex p-2">
+                                                <div class="flex-shrink-0 me-3">
+                                                    <div class="avatar-sm bg-light rounded">
+                                                        <img data-dz-thumbnail class="img-fluid rounded d-block"
+                                                            src="#" alt="Product-Image" />
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="card-header">
-                                        <div class="row align-items-center">
-                                            <div class="col">
-                                                <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0"
-                                                    role="tablist">
-                                                    <li class="nav-item">
-                                                        <a class="nav-link active fw-semibold" data-bs-toggle="tab"
-                                                            href="#productnav-all" role="tab">
-                                                            All <span
-                                                                class="badge badge-soft-danger align-middle rounded-pill ms-1"></span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link fw-semibold" data-bs-toggle="tab"
-                                                            href="#productnav-published" role="tab">
-                                                            Published <span
-                                                                class="badge badge-soft-danger align-middle rounded-pill ms-1"></span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="nav-item">
-                                                        <a class="nav-link fw-semibold" data-bs-toggle="tab"
-                                                            href="#productnav-draft" role="tab">
-                                                            Draft
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-auto">
-                                                <div id="selection-element">
-                                                    <div class="my-n1 d-flex align-items-center text-muted">
-                                                        Select <div id="select-content"
-                                                            class="text-body fw-semibold px-1"></div> Result <button
-                                                            type="button" class="btn btn-link link-danger p-0 ms-3"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#removeItemModal">Remove</button>
+                                                <div class="flex-grow-1">
+                                                    <div class="pt-1">
+                                                        <h5 class="fs-14 mb-1" data-dz-name>&nbsp;</h5>
+                                                        <p class="fs-13 text-muted mb-0" data-dz-size></p>
+                                                        <strong class="error text-danger"
+                                                            data-dz-errormessage></strong>
                                                     </div>
+                                                </div>
+                                                <div class="flex-shrink-0 ms-3">
+                                                    <button data-dz-remove
+                                                        class="btn btn-sm btn-danger">Delete</button>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- end card header -->
-                                    <form action="" method="POST">
-                                        @csrf
-                                        <div class="card-body">
-
-                                            <table class="table table-striped table-inverse table-responsive">
-                                                <thead class="thead-inverse">
-                                                    <tr>
-                                                        <th></th>
-                                                        <th>Title</th>
-                                                        <th>Category</th>
-                                                        <th>Price</th>
-                                                        <th>Total Stock</th>
-                                                        <th>Thumbnail</th>
-                                                        <th>Description</th>
-
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    @foreach ($products as $p)
-                                                        <tr>
-                                                            <td scope="row" name="productID">{{ $p->id }}
-                                                            </td>
-                                                            <td>{{ $p->title }}</td>
-                                                            <td>{{ $p->cat_name }}</td>
-                                                            <td>{{ $p->price_range }}</td>
-                                                            <td>{{ $p->total_stock }}</td>
-                                                            <td>{{ $p->thumbnail }}</td>
-                                                            <td>{{ $p->description }}</td>
-
-                                                            <td><button type="button"
-                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#addAddressModal"
-                                                                    id="{{ $p->id }}">
-                                                                    Details</button></td>
-                                                        </tr>
-                                                    @endforeach
-
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                        @foreach ($products as $pr)
-                                            <div id="addAddressModal" class="modal fade zoomIn" tabindex="-1"
-                                                aria-labelledby="addAddressModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h5 class="modal-title" id="addAddressModalLabel">
-                                                                Product
-                                                                Details</h5>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <table
-                                                            class="table table-striped table-inverse table-responsive">
-                                                            <thead class="thead-inverse">
-                                                                <tr>
-                                                                    <th>Color</th>
-                                                                    <th>Size</th>
-                                                                    <th>Price</th>
-                                                                    <th>Stock</th>
-                                                                    <th></th>
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-
-                                                                @foreach ($productDetails as $p)
-                                                                    @if ($pr->id == $p->product_id)
-                                                                        <tr>
-                                                                            <td scope="row">{{ $p->valueColor }}
-                                                                            </td>
-                                                                            <td>{{ $p->valueSize }}</td>
-                                                                            {{-- <td>{{ $p->import_price }}</td>
-                                                                            <td>{{ $p->stocks }}</td> --}}
-                                                                            <td><button type="submit"
-                                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#addAddressModal">
-                                                                                    Details</button></td>
-                                                                        </tr>
-                                                                    @endif
-                                                                @endforeach
-
-                                                            </tbody>
-                                                        </table>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-light"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="button"
-                                                                class="btn btn-success saveButton">Save</button>
-                                                        </div>
-                                                    </div><!-- /.modal-content -->
-                                                </div><!-- /.modal-dialog -->
-                                            </div><!-- /.modal -->
-                                        @endforeach
-                                        <!-- end card body -->
-                                    </form>
-                                </div>
-                                <!-- end card -->
+                                    </li>
+                                </ul>
+                                <!-- end dropzon-preview -->
                             </div>
                         </div>
-                        <!-- end col -->
-                    </div>
-                    <!-- end row -->
+
+                        <button style="border-radius: 8px" type="submit" class="subButton">Submit</button>
+
+                    </form>
 
                 </div>
                 <!-- container-fluid -->
@@ -2789,34 +2376,6 @@
 
     </div>
     <!-- END layout-wrapper -->
-
-    <!-- removeItemModal -->
-    <div id="removeItemModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        id="btn-close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mt-2 text-center">
-                        <lord-icon src="https://cdn.lordicon.com/gsqxdxog.json" trigger="loop"
-                            colors="primary:#f7b84b,secondary:#f06548" style="width:100px;height:100px"></lord-icon>
-                        <div class="mt-4 pt-2 fs-15 mx-4 mx-sm-5">
-                            <h4>Are you Sure ?</h4>
-                            <p class="text-muted mx-4 mb-0">Are you Sure You want to Remove this Product ?</p>
-                        </div>
-                    </div>
-                    <div class="d-flex gap-2 justify-content-center mt-4 mb-2">
-                        <button type="button" class="btn w-sm btn-light" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn w-sm btn-danger " id="delete-product">Yes, Delete
-                            It!</button>
-                    </div>
-                </div>
-
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
 
 
 
@@ -3568,40 +3127,51 @@
     <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="assets/js/plugins.js"></script>
 
-    <!-- nouisliderribute js -->
-    <script src="assets/libs/nouislider/nouislider.min.js"></script>
-    <script src="assets/libs/wnumb/wNumb.min.js"></script>
+    <!-- ckeditor -->
+    <script src="assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
 
-    <!-- gridjs js -->
-    <script src="assets/libs/gridjs/gridjs.umd.js"></script>
-    <script src="https://unpkg.com/gridjs/plugins/selection/dist/selection.umd.js"></script>
-    <!-- ecommerce product list -->
-    <script src="assets/js/pages/ecommerce-product-list.init.js"></script>
+    <!-- dropzone js -->
+    <script src="assets/libs/dropzone/dropzone-min.js"></script>
+
+    <script src="assets/js/pages/ecommerce-product-create.init.js"></script>
 
     <!-- App js -->
     <script src="assets/js/app.js"></script>
+
     <script>
         var $ = jQuery;
 
-        $('.showDetails').click(function() {
-            $('#editItemModal').addClass('show');
+        $('#formSubmit').submit(function(e) {
+            e.preventDefault();
 
-            let data = {
-                id: $(this).attr('id'),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            }
-            // console.log(id);
+            let image = $('.thumbnail').val();
+            let title = $('.title').val();
+            let description = $('.description').val();
+
+
+            var formData = new FormData(this);
+            formData.append('image', image);
+            formData.append('title', title);
+            formData.append('description', description);
+            // console.log(formData);
+
             $.ajax({
-                url: 'products',
+                url: 'addcategories',
                 type: 'POST',
-                data: data,
-                // headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(response) {
-                    // console.log(data);
+                    console.log(formData);
+
                 }
-            })
-        })
+            });
+        });
     </script>
 </body>
+
+
 
 </html>
