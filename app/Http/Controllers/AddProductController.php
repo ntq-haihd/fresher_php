@@ -2,21 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AttributeValues;
+use App\Services\CategoriesService;
+use App\Services\ProductsService;
 use Illuminate\Http\Request;
 use Session;
 
 class AddProductController extends Controller
 {
-    public function getAddProduct(){
-        return view('addProduct');
+
+    protected $productsService;
+    protected $categoriesService;
+
+    public function __construct(ProductsService $productsService, CategoriesService $categoriesService)
+    {
+        $this->productsService = $productsService;
+        $this->categoriesService = $categoriesService;
+    }
+    public function getAddProduct()
+    {
+
+        $categories = $this->categoriesService->getAll();
+
+        return view('addProduct2', compact('categories'));
     }
 
-    public function postAddProduct(Request $req){
+    public function postAddProduct(Request $req)
+    {
+        $dataProduct = json_decode($req['dataProduct']);
+        $variables = json_decode($req['variables']);
+        $thumbnail = $req['thumbnail'];
 
-        $product = $req->all();
-        Session::put('productData', $product);
-        // dd($product);
-        return response()->json(['success' => true]);
+        $data = [
+            'dataProduct' => $dataProduct,
+            'variables' => $variables,
+            'thumbnail' => $thumbnail
+        ];
+        // dd($data);
+        $this->productsService->create($data);
+
+        return response()->json([
+            'success' => true,
+            'message' => 'ok'
+        ]);
 
     }
 }

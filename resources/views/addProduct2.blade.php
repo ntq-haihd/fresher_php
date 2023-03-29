@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
     <meta content="Themesbrand" name="author" />
-
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <!-- App favicon -->
     <link rel="shortcut icon" href="assets/images/favicon.ico">
+
 
     <!-- Plugins css -->
     <link href="assets/libs/dropzone/dropzone.css" rel="stylesheet" type="text/css" />
@@ -27,9 +27,7 @@
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
-    {{-- jquery lib --}}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-
 </head>
 
 <body>
@@ -2258,54 +2256,34 @@
                         <div class="col-12">
                             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
                                 <h4 class="mb-sm-0">Create Product</h4>
-
-                                <div class="page-title-right">
-                                    <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a>
-                                        </li>
-                                        <li class="breadcrumb-item active">Create Product</li>
-                                    </ol>
-                                </div>
-
                             </div>
                         </div>
                     </div>
                     <!-- end page title -->
 
-                    <form id="createproduct-form"  class="needs-validation" method="POST" >
+                    <form id="createproduct-form" autocomplete="off" class="needs-validation formSubmit" novalidate
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-8">
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="mb-3">
-                                            <label class="form-label" for="product-title-input">Product
-                                                Title</label>
-                                            <input type="hidden" class="form-control" id="formAction"
-                                                name="formAction" value="add">
-                                            <input type="text" class="form-control d-none"
-                                                id="product-id-input">
-                                            <input type="text" class="form-control productTitle" id="product-title-input"
-                                                value="" placeholder="Enter product title"
-                                                name="productTitle">
+                                            <h5><label class="form-label" for="product-title-input">Product
+                                                    Title</label></h5>
+                                            <input type="text" class="form-control title" id="product-title-input"
+                                                name="title" placeholder="Enter product title" required>
                                             <div class="invalid-feedback">Please Enter a product title.</div>
                                         </div>
                                         <div>
-                                            <label>Product Description</label>abc
-
-                                            <div id="ckeditor-classic">
-                                                <p>Tommy Hilfiger men striped pink sweatshirt. Crafted with cotton.
-                                                    Material composition is 100% organic cotton. This is one of the
-                                                    world’s leading designer lifestyle brands and is internationally
-                                                    recognized for celebrating the essence of classic American cool
-                                                    style, featuring preppy with a twist designs.</p>
-                                                <ul>
-                                                    <li>Full Sleeve</li>
-                                                    <li>Cotton</li>
-                                                    <li>All Sizes available</li>
-                                                    <li>4 Different Color</li>
-                                                </ul>
+                                            <h5><label>Product Description</label></h5>
+                                            <div class="mb-3">
+                                                <div class="input-group has-validation mb-3">
+                                                    <textarea class="form-control description" name="description" placeholder="Must enter minimum of a 100 characters"
+                                                        rows="3"></textarea>
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -2313,54 +2291,14 @@
 
                                 <div class="card">
                                     <div class="card-header">
-                                        <h5 class="card-title mb-0">Product Gallery</h5>
+                                        <h4 class="card-title mb-0">Product Images</h4>
                                     </div>
                                     <div class="card-body">
-                                        <div class="mb-4">
-                                            <h5 class="fs-14 mb-1">Product Image</h5>
-                                            <p class="text-muted">Add Product main Image.</p>
-                                            <div class="text-center">
-                                                <div class="position-relative d-inline-block">
-                                                    <div class="position-absolute top-100 start-100 translate-middle">
-                                                        <label for="product-image-input" class="mb-0"
-                                                            data-bs-toggle="tooltip" data-bs-placement="right"
-                                                            title="Select Image">
-                                                            <div class="avatar-xs">
-                                                                <div
-                                                                    class="avatar-title bg-light border rounded-circle text-muted cursor-pointer">
-                                                                    <i class="ri-image-fill"></i>
-                                                                </div>
-                                                            </div>
-                                                        </label>
-                                                        <input class="form-control d-none" value=""
-                                                            id="product-image-input" type="file"
-                                                            accept="image/png, image/gif, image/jpeg">
-                                                    </div>
-                                                    <div class="avatar-lg">
-                                                        <div class="avatar-title bg-light rounded">
-                                                            <img src="" id="product-img"
-                                                                class="avatar-md h-auto" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div>
-                                            <h5 class="fs-14 mb-1">Product Gallery</h5>
-                                            <p class="text-muted">Add Product Gallery Images.</p>
+                                            <h5 class="fs-14 mb-1">Thumbnail</h5>
+                                            <p class="text-muted">Add Product Thumbnail Images.</p>
 
-                                            <div class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                                <div class="dz-message needsclick">
-                                                    <div class="mb-3">
-                                                        <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                                    </div>
-
-                                                    <h5>Drop files here or click to upload.</h5>
-                                                </div>
-                                            </div>
+                                            <input name="file" class="thumbnail" type="file" multiple="multiple">
 
                                             <ul class="list-unstyled mb-0" id="dropzone-preview">
                                                 <li class="mt-2" id="dropzone-preview-list">
@@ -2396,153 +2334,113 @@
                                 </div>
                                 <!-- end card -->
 
-                                <div class="card">
-                                    <div class="card-header">
-                                        <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0"
-                                            role="tablist">
-                                            <li class="nav-item">
-                                                <a class="nav-link active" data-bs-toggle="tab"
-                                                    href="#addproduct-general-info" role="tab">
-                                                    General Info
-                                                </a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link" data-bs-toggle="tab"
-                                                    href="#addproduct-metadata" role="tab">
-                                                    Meta Data
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <!-- end card header -->
-                                    <div class="card-body">
-                                        <div class="tab-content">
-                                            <div class="tab-pane active" id="addproduct-general-info"
-                                                role="tabpanel">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="manufacturer-name-input">Manufacturer
-                                                                Name</label>
-                                                            <input type="text" class="form-control"
-                                                                id="manufacturer-name-input"
-                                                                placeholder="Enter manufacturer name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="manufacturer-brand-input">Manufacturer
-                                                                Brand</label>
-                                                            <input type="text" class="form-control"
-                                                                id="manufacturer-brand-input"
-                                                                placeholder="Enter manufacturer brand">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- end row -->
-
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="stocks-input">Stocks</label>
-                                                            <input type="text" class="form-control stockInput"
-                                                                id="stocks-input" placeholder="Stocks" required>
-                                                            <div class="invalid-feedback">Please Enter a product
-                                                                stocks.</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="product-price-input">Price</label>
-                                                            <div class="input-group has-validation mb-3">
-                                                                <span class="input-group-text"
-                                                                    id="product-price-addon">$</span>
-                                                                <input type="text" class="form-control priceInput"
-                                                                    id="product-price-input"
-                                                                    placeholder="Enter price" aria-label="Price"
-                                                                    aria-describedby="product-price-addon" required>
-                                                                <div class="invalid-feedback">Please Enter a product
-                                                                    price.</div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="product-discount-input">Discount</label>
-                                                            <div class="input-group mb-3">
-                                                                <span class="input-group-text"
-                                                                    id="product-discount-addon">%</span>
-                                                                <input type="text" class="form-control discountInput"
-                                                                    id="product-discount-input"
-                                                                    placeholder="Enter discount"
-                                                                    aria-label="discount"
-                                                                    aria-describedby="product-discount-addon">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-sm-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label"
-                                                                for="orders-input">Orders</label>
-                                                            <input type="text" class="form-control ordersInput"
-                                                                id="orders-input" placeholder="Orders" required>
-                                                            <div class="invalid-feedback">Please Enter a product
-                                                                orders.</div>
-                                                        </div>
-                                                    </div>
-                                                    <!-- end col -->
-                                                </div>
-                                                <!-- end row -->
-                                            </div>
-                                            <!-- end tab-pane -->
-
-                                            <div class="tab-pane" id="addproduct-metadata" role="tabpanel">
-                                                <div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label" for="meta-title-input">Meta
-                                                                title</label>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Enter meta title"
-                                                                id="meta-title-input">
-                                                        </div>
-                                                    </div>
-                                                    <!-- end col -->
-
-                                                    <div class="col-lg-6">
-                                                        <div class="mb-3">
-                                                            <label class="form-label" for="meta-keywords-input">Meta
-                                                                Keywords</label>
-                                                            <input type="text" class="form-control"
-                                                                placeholder="Enter meta keywords"
-                                                                id="meta-keywords-input">
-                                                        </div>
-                                                    </div>
-                                                    <!-- end col -->
-                                                </div>
-                                                <!-- end row -->
-
-                                                <div>
-                                                    <label class="form-label" for="meta-description-input">Meta
-                                                        Description</label>
-                                                    <textarea class="form-control" id="meta-description-input" placeholder="Enter meta description" rows="3"></textarea>
-                                                </div>
-                                            </div>
-                                            <!-- end tab pane -->
+                                <div class="mt-4">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <div class="flex-grow-1">
+                                            <h5 class="fs-14 mb-0">Saved Variables</h5>
                                         </div>
-                                        <!-- end tab content -->
+                                        <div class="flex-shrink-0">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-sm btn-primary mb-3"
+                                                data-bs-toggle="modal" data-bs-target="#addAddressModal">
+                                                Add Variables
+                                            </button>
+                                        </div>
                                     </div>
-                                    <!-- end card body -->
+                                    <div class="row gy-3 showSavedVariables">
+
+                                    </div>
+                                    <div class="modal fade" id="editItemModal" tabindex="-1"
+                                        aria-labelledby="editItemModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="editItemModalLabel">Edit Item</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="mb-3">
+                                                        <label for="editColor" class="form-label">Color:</label>
+                                                        <input type="text" class="form-control" id="editColor">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editSize" class="form-label">Size:</label>
+                                                        <input type="text" class="form-control" id="editSize">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editPrice" class="form-label">Price:</label>
+                                                        <input type="text" class="form-control" id="editPrice">
+                                                    </div>
+                                                    <div class="mb-3">
+                                                        <label for="editStock" class="form-label">Stock:</label>
+                                                        <input type="text" class="form-control" id="editStock">
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button"
+                                                        class="btn btn-primary saveEdit">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="addAddressModal" class="modal fade zoomIn" tabindex="-1"
+                                        aria-labelledby="addAddressModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="addAddressModalLabel">Variables</h5>
+                                                    <button type="button" class="btn-close"
+                                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div>
+                                                        <div class="mb-3">
+                                                            <label for="addaddress-Name"
+                                                                class="form-label">Color</label>
+                                                            <input type="text" class="form-control inputColor"
+                                                                id="addaddress-Name" placeholder="Enter color">
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="addaddress-Name"
+                                                                class="form-label">Size</label>
+                                                            <input type="text" class="form-control inputSize"
+                                                                id="addaddress-Name" placeholder="Enter size">
+                                                        </div>
+
+                                                        <div class="mb-3">
+                                                            <label for="addaddress-Name"
+                                                                class="form-label">Price</label>
+                                                            <input type="text" class="form-control inputPrice"
+                                                                id="addaddress-Name" placeholder="Enter price">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label for="addaddress-Name"
+                                                                class="form-label">Stock</label>
+                                                            <input type="number" class="form-control inputStock"
+                                                                id="addaddress-Name" placeholder="Enter stock">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-light"
+                                                        data-bs-dismiss="modal">Close</button>
+                                                    <button type="button"
+                                                        class="btn btn-success saveButton">Save</button>
+                                                </div>
+                                            </div><!-- /.modal-content -->
+                                        </div><!-- /.modal-dialog -->
+                                    </div><!-- /.modal -->
+
                                 </div>
                                 <!-- end card -->
                                 <div class="text-end mb-3">
-                                    <button type="submit" class="submitAdd" class="btn btn-primary w-sm">Submit</button>
+                                    <button type="submit"
+                                        class="btn btn-primary w-sm submitProduct">Submit</button>
                                 </div>
                             </div>
                             <!-- end col -->
@@ -2557,63 +2455,33 @@
                                             <label for="choices-publish-status-input"
                                                 class="form-label">Status</label>
 
-                                            <select class="form-select" id="choices-publish-status-input"
+                                            <select class="form-select status" id="choices-publish-status-input"
                                                 data-choices data-choices-search-false>
                                                 <option value="Published" selected>Published</option>
-                                                <option value="Scheduled">Scheduled</option>
                                                 <option value="Draft">Draft</option>
                                             </select>
                                         </div>
-
-                                        <div>
-                                            <label for="choices-publish-visibility-input"
-                                                class="form-label">Visibility</label>
-                                            <select class="form-select" id="choices-publish-visibility-input"
-                                                data-choices data-choices-search-false>
-                                                <option value="Public" selected>Public</option>
-                                                <option value="Hidden">Hidden</option>
-                                            </select>
-                                        </div>
                                     </div>
                                     <!-- end card body -->
                                 </div>
                                 <!-- end card -->
 
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">Publish Schedule</h5>
-                                    </div>
-                                    <!-- end card body -->
-                                    <div class="card-body">
-                                        <div>
-                                            <label for="datepicker-publish-input" class="form-label">Publish Date &
-                                                Time</label>
-                                            <input type="text" id="datepicker-publish-input"
-                                                class="form-control" placeholder="Enter publish date"
-                                                data-provider="flatpickr" data-date-format="d.m.y" data-enable-time>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- end card -->
 
                                 <div class="card">
                                     <div class="card-header">
                                         <h5 class="card-title mb-0">Product Categories</h5>
                                     </div>
                                     <div class="card-body">
-                                        <p class="text-muted mb-2"> <a href="#"
+                                        <p class="text-muted mb-2"> <a href="{{ route('addproduct') }}"
                                                 class="float-end text-decoration-underline">Add
                                                 New</a>Select product category</p>
-                                        <select class="form-select selectCategory" id="choices-category-input"
-                                            name="choices-category-input" data-choices data-choices-search-false>
-                                            <option value="Appliances">Appliances</option>
-                                            <option value="Automotive Accessories">Automotive Accessories</option>
-                                            <option value="Electronics">Electronics</option>
-                                            <option value="Fashion">Fashion</option>
-                                            <option value="Furniture">Furniture</option>
-                                            <option value="Grocery">Grocery</option>
-                                            <option value="Kids">Kids</option>
-                                            <option value="Watches">Watches</option>
+                                        <select class="form-select categories" id="choices-category-input"
+                                            name="cat_id" data-choices
+                                            data-choices-search-false>
+                                            @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->title }}
+                                                </option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <!-- end card body -->
@@ -2626,23 +2494,11 @@
                                     <div class="card-body">
                                         <div class="hstack gap-3 align-items-start">
                                             <div class="flex-grow-1">
-                                                <input class="form-control" data-choices
+                                                <input class="form-control tags" data-choices
                                                     data-choices-multiple-remove="true" placeholder="Enter tags"
                                                     type="text" value="Cotton" />
                                             </div>
                                         </div>
-                                    </div>
-                                    <!-- end card body -->
-                                </div>
-                                <!-- end card -->
-
-                                <div class="card">
-                                    <div class="card-header">
-                                        <h5 class="card-title mb-0">Product Short Description</h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <p class="text-muted mb-2">Add short description for product</p>
-                                        <textarea class="form-control" placeholder="Must enter minimum of a 100 characters" rows="3"></textarea>
                                     </div>
                                     <!-- end card body -->
                                 </div>
@@ -2720,7 +2576,7 @@
                     <h6 class="mb-0 fw-semibold text-uppercase">Layout</h6>
                     <p class="text-muted">Choose your layout</p>
 
-                    <div class="row">
+                    <div class="row gy-3">
                         <div class="col-4">
                             <div class="form-check card-radio">
                                 <input id="customizer-layout01" name="data-layout" type="radio"
@@ -2798,6 +2654,33 @@
                             <h5 class="fs-13 text-center mt-2">Two Column</h5>
                         </div>
                         <!-- end col -->
+
+                        <div class="col-4">
+                            <div class="form-check card-radio">
+                                <input id="customizer-layout04" name="data-layout" type="radio"
+                                    value="semibox" class="form-check-input">
+                                <label class="form-check-label p-0 avatar-md w-100" for="customizer-layout04">
+                                    <span class="d-flex gap-1 h-100">
+                                        <span class="flex-shrink-0 p-1">
+                                            <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                <span class="d-block p-1 px-2 bg-soft-primary rounded mb-2"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-soft-primary"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-soft-primary"></span>
+                                                <span class="d-block p-1 px-2 pb-0 bg-soft-primary"></span>
+                                            </span>
+                                        </span>
+                                        <span class="flex-grow-1">
+                                            <span class="d-flex h-100 flex-column pt-1 pe-2">
+                                                <span class="bg-light d-block p-1"></span>
+                                                <span class="bg-light d-block p-1 mt-auto"></span>
+                                            </span>
+                                        </span>
+                                    </span>
+                                </label>
+                            </div>
+                            <h5 class="fs-13 text-center mt-2">Semi Box</h5>
+                        </div>
+                        <!-- end col -->
                     </div>
 
                     <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Color Scheme</h6>
@@ -2857,6 +2740,59 @@
                                     </label>
                                 </div>
                                 <h5 class="fs-13 text-center mt-2">Dark</h5>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="sidebar-visibility">
+                        <h6 class="mt-4 mb-0 fw-semibold text-uppercase">Sidebar Visibility</h6>
+                        <p class="text-muted">Choose show or Hidden sidebar.</p>
+
+                        <div class="row">
+                            <div class="col-4">
+                                <div class="form-check card-radio">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-visibility"
+                                        id="sidebar-visibility-show" value="show">
+                                    <label class="form-check-label p-0 avatar-md w-100"
+                                        for="sidebar-visibility-show">
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-shrink-0 p-1">
+                                                <span class="bg-light d-flex h-100 flex-column gap-1 p-1">
+                                                    <span
+                                                        class="d-block p-1 px-2 bg-soft-primary rounded mb-2"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-soft-primary"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-soft-primary"></span>
+                                                    <span class="d-block p-1 px-2 pb-0 bg-soft-primary"></span>
+                                                </span>
+                                            </span>
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column pt-1 pe-2">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-13 text-center mt-2">Show</h5>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-check card-radio">
+                                    <input class="form-check-input" type="radio" name="data-sidebar-visibility"
+                                        id="sidebar-visibility-hidden" value="hidden">
+                                    <label class="form-check-label p-0 avatar-md w-100 px-2"
+                                        for="sidebar-visibility-hidden">
+                                        <span class="d-flex gap-1 h-100">
+                                            <span class="flex-grow-1">
+                                                <span class="d-flex h-100 flex-column pt-1 px-2">
+                                                    <span class="bg-light d-block p-1"></span>
+                                                    <span class="bg-light d-block p-1 mt-auto"></span>
+                                                </span>
+                                            </span>
+                                        </span>
+                                    </label>
+                                </div>
+                                <h5 class="fs-13 text-center mt-2">Hidden</h5>
                             </div>
                         </div>
                     </div>
@@ -3444,33 +3380,109 @@
     <script src="assets/js/app.js"></script>
     <script>
         var $ = jQuery;
-        $('.submitAdd').click(function(e) {
-            e.preventDefault();
-            
-            // console.log(stock);
-            let productData ={
-                title : $('.productTitle').val(),
-                stock : $('.stockInput').val(),
-                price : $('.priceInput').val(),
-                discount : $('.discountInput').val(),
-                orders : $('.ordersInput').val(),
-                selectCategory : $('.selectCategory').val(),
-                _token: $('meta[name="csrf-token"]').attr('content')
-            };
-            // console.log(productData);
-            $.ajax({
-                url:  'addproduct',
-                type: 'POST',
-                data: productData,
-                success: function(response){
-                    console.log(productData);
-                }
-            });
+        $('.saveButton').click(function(e) {
+            $('.showSavedVariables').append('<div class="col-lg-4 col-sm-6 bigFormVariables">' +
+                '<div class="form-check card-radio " style="border: 1px solid #103764; border-radius: 3px;">' +
+                '<div style="margin: 8px">' + 'Color: ' + '<span class="spanVariables color">' + $(
+                    '.inputColor').val() +
+                '</span>' + '</div>' +
+                '<div  style="margin: 8px">' + 'Size: ' + '<span class="spanVariables size">' + $('.inputSize')
+                .val() +
+                '</span>' + '</div>' +
+                '<div  style="margin: 8px">' + 'Price: ' + '<span class="spanVariables import_price">' + $(
+                    '.inputPrice')
+                .val() + '</span>' + '</div>' +
+                '<div  style="margin: 8px">' + 'Stock: ' + '<span class="spanVariables stocks">' + $(
+                    '.inputStock').val() +
+                '</span>' + '</div>' +
+                '</div>' +
+                '<div class="d-flex flex-wrap p-2 py-1 bg-light rounded-bottom border mt-n1">' +
+                '<div><a href="#" class="d-block text-body p-1 px-2 editLink" data-bs-toggle="modal" data-bs-target="#editItemModal"><i class="ri-pencil-fill text-muted align-bottom me-1"></i>Edit</a></div>' +
+                '<div><a href="#" class="d-block text-body p-1 px-2 removeLink" data-bs-toggle="modal" data-bs-target="#removeItemModal"><i class="ri-delete-bin-fill text-muted align-bottom me-1"></i>Remove</a></div>' +
+                '</div>' +
+                '</div>'
+            );
 
         });
-        
-        
-        </script>
+
+        let dataVariables;
+        let dataProduct;
+
+        $('.showSavedVariables').on('click', '.removeLink', function(e) {
+            e.preventDefault();
+            $(this).closest('.bigFormVariables').remove();
+        });
+        $('.showSavedVariables').on('click', '.editLink', function(e) {
+            e.preventDefault();
+            $(this).closest('.bigFormVariables').addClass('editing');
+        });
+        $('.showSavedVariables').on('click', '.editLink', function(e) {
+            e.preventDefault();
+            var parentDiv = $(this).closest('.bigFormVariables');
+            var color = parentDiv.find('.color').text();
+            var size = parentDiv.find('.size').text();
+            var price = parentDiv.find('.import_price').text();
+            var stocks = parentDiv.find('.stocks').text();
+        });
+        $('#editItemModal').on('click', '.saveEdit', function(e) {
+            e.preventDefault();
+            var parentDiv = $('.showSavedVariables').find('.bigFormVariables.editing');
+            parentDiv.find('.color').text($('#editColor').val());
+            parentDiv.find('.size').text($('#editSize').val());
+            parentDiv.find('.import_price').text($('#editPrice').val());
+            parentDiv.find('.stocks').text($('#editStock').val());
+            $('#editItemModal').modal('hide');
+        });
+
+
+
+        $('.formSubmit').submit(function(e) {
+            e.preventDefault();
+            // console.log($('.thumbnail')[0].files[0]);
+            dataProduct = {
+                title: $('.title').val(),
+                description: $('.description').val(),
+                status: $('.status').val(),
+                categories: $('.categories').val(),
+                tags: $('.tags').val(),
+                _token: $('meta[name="csrf-token"]').attr('content')
+            };
+            var allDataVariables = [];
+            var variables = [];
+
+            $('.bigFormVariables').each(function() {
+                var dataVariables = {
+                    color: $(this).find('.color').text(),
+                    size: $(this).find('.size').text(),
+                    import_price: $(this).find('.import_price').text(),
+                    stocks: $(this).find('.stocks').text(),
+                    _token: $('meta[name="csrf-token"]').attr('content')
+                };
+
+                variables.push(dataVariables);
+            });
+            let thumbnail = $('.thumbnail')[0].files[0];
+
+            var formData = new FormData();
+            formData.append('dataProduct', JSON.stringify(dataProduct));
+            formData.append('variables', JSON.stringify(variables));
+            formData.append('thumbnail', thumbnail);
+
+            $.ajax({
+                url: 'addproduct',
+                type: 'POST',
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
+                success: function(response) {
+                    // console.log(data);
+                }
+            })
+
+        });
+    </script>
 </body>
 
 </html>
