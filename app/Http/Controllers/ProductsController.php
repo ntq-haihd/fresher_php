@@ -40,7 +40,8 @@ class ProductsController extends Controller
         $id = $req['id'];
 
         $productDetails = $this->productDetailsService->getById($id);
-        dd($productDetails);
+        // dd($productDetails);
+        return $productDetails;
 
     }
 }

@@ -48,7 +48,7 @@ class ProductVariablesRepository extends BaseRepository
 
     public function getById($id)
     {
-        // return ProductVariables::where('product_id', $id)->get();
+        
         return Products::with('productVariables.attributes.values.attribute')
         ->where('id', $id)
         ->get();

@@ -2715,30 +2715,22 @@
                                                             class="table table-striped table-inverse table-responsive">
                                                             <thead class="thead-inverse">
                                                                 <tr>
+                                                                    <th></th>
                                                                     <th>Color</th>
                                                                     <th>Size</th>
                                                                     <th>Price</th>
                                                                     <th>Stock</th>
-                                                                    <th></th>
                                                                 </tr>
                                                             </thead>
-                                                            <tbody>
-                                                                {{-- @foreach ($productDetails as $p) --}}
-                                                                {{-- @if ($pr->id == $p->product_id) --}}
-                                                                <tr>
+                                                            <tbody id="valueVariables">
+                                                                {{-- <tr>
                                                                     <td scope="row"></td>
-                                                                    <td></td>
-                                                                    <td id="price">{{ $p->import_price }}</td>
-                                                                    <td id="stocks">{{ $p->stocks }}</td>
-                                                                    <td><button type="submit"
-                                                                            class="btn btn-sm btn-primary mb-3 "
-                                                                            data-bs-toggle="modal"
-                                                                            data-bs-target="#addAddressModal">
-                                                                            Details</button></td>
-                                                                </tr>
-                                                                {{-- @endif --}}
-                                                                {{-- @endforeach --}}
+                                                                    <td id="color"></td>
+                                                                    <td id="size"></td>
+                                                                    <td id="price"></td>
+                                                                    <td id="stocks"></td>
 
+                                                                </tr> --}}
                                                             </tbody>
                                                         </table>
                                                         <div class="modal-footer">
@@ -3584,20 +3576,6 @@
     <script>
         var $ = jQuery;
 
-        // $(document).on('click', '.showDetails', function() {
-        //     var productId = $(this).data('product-id');
-        //     $.ajax({
-        //         url: 'products',
-        //         type: 'GET',
-        //         dataType: 'json',
-        //         success: function(productDetails) {
-        //             $('#addAddressModal #price').text(productDetails.price);
-        //             $('#addAddressModal #stocks').text(productDetails.stock);
-        //             $('#addAddressModal').modal('show');
-        //         }
-        //     });
-        // });
-
         $('.showDetails').click(function() {
             $('#editItemModal').addClass('show');
 
@@ -3606,22 +3584,36 @@
                 _token: $('meta[name="csrf-token"]').attr('content')
             }
             // console.log(id);
+            //
+
             $.ajax({
                 url: 'products',
                 type: 'POST',
                 data: data,
                 // headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(response) {
-                    //     response = Object.assign({
-                    //     'price': 0,
-                    //     'size': 0,
-                    //     'color': 0,
-                    //     'stocks': 0
-                    // }, response)
-                    // $('#price').text(response.import_price)
+                    console.log(response);
+                    var a = response[0]['product_variables'];
+                    var tbodyHtml = ""; // create an empty string to hold the tbody html
+                    for (var i = 0; i < a.length; i++) {
+                        for (var k = 0; 2 * k < a[i]['attributes'].length; k++) {
+                            tbodyHtml += "<tr>";
+                            tbodyHtml += "<td></td>";
+                            tbodyHtml += "<td>" + a[i]['attributes'][2 * k]['values']['value'] +
+                                "</td>";
+                            tbodyHtml += "<td>" + a[i]['attributes'][2 * k + 1]['values']['value'] +
+                                "</td>";
+                            tbodyHtml += "<td>" + a[i]['import_price'] + "</td>";
+                            tbodyHtml += "<td>" + a[i]['stocks'] + "</td>";
+                            tbodyHtml += "</tr>";
+                        }
 
+
+                    }
+                    $('#valueVariables').html(tbodyHtml); // add the tbody html to the table
                 }
             })
+
         })
     </script>
 </body>

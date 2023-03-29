@@ -85,7 +85,7 @@ class ProductsService
 
             $attrValuesIds[] = $colorAttrValue->id;
             $attrValuesIds[] = $sizeAttrValue->id;
-
+            
 
             $proVariables = [
                 'import_price' => $a['import_price'],
@@ -102,7 +102,6 @@ class ProductsService
 
             $attributeVariables = $this->attributesVariablesRepository->create($attrVariables);
         }
-
 
 
     }

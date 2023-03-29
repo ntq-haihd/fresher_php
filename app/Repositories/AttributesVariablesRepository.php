@@ -26,7 +26,7 @@ class AttributesVariablesRepository extends BaseRepository
         $proVariId = $attributes['product_variable_id'];
 
         foreach($attrValueId as $attr){
-            AttributesVariables::create(
+            AttributesVariables::firstOrCreate(
                 [
                     'attribute_value_id' => $attr,
                     'product_variable_id' => $proVariId
@@ -34,12 +34,6 @@ class AttributesVariablesRepository extends BaseRepository
             );
         }
 
-        // return AttributesVariables::create(
-        //     [
-        //         'attribute_value_id' => $attributes['attribute_value_id'],
-        //         'product_variable_id' => $attributes['product_variable_id']
-        //     ]
-        // );
     }
 
     public function getAll()
@@ -51,4 +45,5 @@ class AttributesVariablesRepository extends BaseRepository
     {
         return AttributesVariables::class;
     }
+
 }
