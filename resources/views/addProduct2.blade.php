@@ -2261,8 +2261,8 @@
                     </div>
                     <!-- end page title -->
 
-                    <form id="createproduct-form" autocomplete="off" class="needs-validation" novalidate
-                        method="POST">
+                    <form id="createproduct-form" autocomplete="off" class="needs-validation formSubmit" novalidate
+                        method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col-lg-8">
@@ -2271,7 +2271,7 @@
                                         <div class="mb-3">
                                             <h5><label class="form-label" for="product-title-input">Product
                                                     Title</label></h5>
-                                            <input type="text" class="form-control " id="product-title-input"
+                                            <input type="text" class="form-control title" id="product-title-input"
                                                 name="title" placeholder="Enter product title" required>
                                             <div class="invalid-feedback">Please Enter a product title.</div>
                                         </div>
@@ -2298,18 +2298,7 @@
                                             <h5 class="fs-14 mb-1">Thumbnail</h5>
                                             <p class="text-muted">Add Product Thumbnail Images.</p>
 
-                                            <div class="dropzone">
-                                                <div class="fallback">
-                                                    <input name="file" type="file" multiple="multiple">
-                                                </div>
-                                                <div class="dz-message needsclick">
-                                                    <div class="mb-3">
-                                                        <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                                    </div>
-
-                                                    <h5>Drop files here or click to upload.</h5>
-                                                </div>
-                                            </div>
+                                            <input name="file" class="thumbnail" type="file" multiple="multiple">
 
                                             <ul class="list-unstyled mb-0" id="dropzone-preview">
                                                 <li class="mt-2" id="dropzone-preview-list">
@@ -2434,55 +2423,6 @@
                                                                 class="form-label">Stock</label>
                                                             <input type="number" class="form-control inputStock"
                                                                 id="addaddress-Name" placeholder="Enter stock">
-                                                        </div>
-                                                        <div class="card-body">
-                                                            <div>
-                                                                <h5 class="fs-14 mb-1">Thumbnail</h5>
-                                                                <p class="text-muted">Add Product Thumbnail Images.</p>
-
-                                                                <div class="dropzone">
-                                                                    <div class="fallback">
-                                                                        <input name="file" type="file" multiple="multiple">
-                                                                    </div>
-                                                                    <div class="dz-message needsclick">
-                                                                        <div class="mb-3">
-                                                                            <i class="display-4 text-muted ri-upload-cloud-2-fill"></i>
-                                                                        </div>
-
-                                                                        <h5>Drop files here or click to upload.</h5>
-                                                                    </div>
-                                                                </div>
-
-                                                                <ul class="list-unstyled mb-0" id="dropzone-preview">
-                                                                    <li class="mt-2" id="dropzone-preview-list">
-                                                                        <!-- This is used as the file preview template -->
-                                                                        <div class="border rounded">
-                                                                            <div class="d-flex p-2">
-                                                                                <div class="flex-shrink-0 me-3">
-                                                                                    <div class="avatar-sm bg-light rounded">
-                                                                                        <img data-dz-thumbnail
-                                                                                            class="img-fluid rounded d-block"
-                                                                                            src="#" alt="Product-Image" />
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="flex-grow-1">
-                                                                                    <div class="pt-1">
-                                                                                        <h5 class="fs-14 mb-1" data-dz-name>&nbsp;</h5>
-                                                                                        <p class="fs-13 text-muted mb-0" data-dz-size></p>
-                                                                                        <strong class="error text-danger"
-                                                                                            data-dz-errormessage></strong>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="flex-shrink-0 ms-3">
-                                                                                    <button data-dz-remove type="button"
-                                                                                        class="btn btn-sm btn-danger">Delete</button>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </li>
-                                                                </ul>
-                                                                <!-- end dropzon-preview -->
-                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -3496,10 +3436,11 @@
 
 
 
-        $('.submitProduct').click(function(e) {
+        $('.formSubmit').submit(function(e) {
             e.preventDefault();
+            // console.log($('.thumbnail')[0].files[0]);
             dataProduct = {
-                title: $('#product-title-input').val(),
+                title: $('.title').val(),
                 description: $('.description').val(),
                 status: $('.status').val(),
                 categories: $('.categories').val(),
@@ -3507,6 +3448,7 @@
                 _token: $('meta[name="csrf-token"]').attr('content')
             };
             var allDataVariables = [];
+            var variables = [];
 
             $('.bigFormVariables').each(function() {
                 var dataVariables = {
@@ -3516,17 +3458,24 @@
                     stocks: $(this).find('.stocks').text(),
                     _token: $('meta[name="csrf-token"]').attr('content')
                 };
-                allDataVariables.push(dataVariables);
-            });
 
-            let dataAll = $.extend({}, dataProduct, {
-                variables: allDataVariables
+                variables.push(dataVariables);
             });
-            console.log(dataAll);
+            let thumbnail = $('.thumbnail')[0].files[0];
+
+            var formData = new FormData();
+            formData.append('dataProduct', JSON.stringify(dataProduct));
+            formData.append('variables', JSON.stringify(variables));
+            formData.append('thumbnail', thumbnail);
+
             $.ajax({
                 url: 'addproduct',
                 type: 'POST',
-                data: dataAll,
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(response) {
                     // console.log(data);
                 }

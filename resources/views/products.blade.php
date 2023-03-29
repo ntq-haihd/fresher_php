@@ -2683,23 +2683,23 @@
                                                             <td>{{ $p->cat_name }}</td>
                                                             <td>{{ $p->price_range }}</td>
                                                             <td>{{ $p->total_stock }}</td>
-                                                            <td>{{ $p->thumbnail }}</td>
+                                                            <td>
+                                                                <img src="{{ $p->thumbnail }}"
+                                                                    style="height: 70px; width: 120px"
+                                                                    alt="">
+                                                            </td>
                                                             <td>{{ $p->description }}</td>
-
                                                             <td><button type="button"
                                                                     class="btn btn-sm btn-primary mb-3 showDetails"
                                                                     data-bs-toggle="modal"
                                                                     data-bs-target="#addAddressModal"
+                                                                    data-product-id="{{ $p->id }}"
                                                                     id="{{ $p->id }}">
                                                                     Details</button></td>
                                                         </tr>
                                                     @endforeach
-
                                                 </tbody>
                                             </table>
-
-                                        </div>
-                                        @foreach ($products as $pr)
                                             <div id="addAddressModal" class="modal fade zoomIn" tabindex="-1"
                                                 aria-labelledby="addAddressModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered">
@@ -2723,23 +2723,21 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-
-                                                                @foreach ($productDetails as $p)
-                                                                    @if ($pr->id == $p->product_id)
-                                                                        <tr>
-                                                                            <td scope="row">{{ $p->valueColor }}
-                                                                            </td>
-                                                                            <td>{{ $p->valueSize }}</td>
-                                                                            {{-- <td>{{ $p->import_price }}</td>
-                                                                            <td>{{ $p->stocks }}</td> --}}
-                                                                            <td><button type="submit"
-                                                                                    class="btn btn-sm btn-primary mb-3 showDetails"
-                                                                                    data-bs-toggle="modal"
-                                                                                    data-bs-target="#addAddressModal">
-                                                                                    Details</button></td>
-                                                                        </tr>
-                                                                    @endif
-                                                                @endforeach
+                                                                {{-- @foreach ($productDetails as $p) --}}
+                                                                {{-- @if ($pr->id == $p->product_id) --}}
+                                                                <tr>
+                                                                    <td scope="row"></td>
+                                                                    <td></td>
+                                                                    <td id="price">{{ $p->import_price }}</td>
+                                                                    <td id="stocks">{{ $p->stocks }}</td>
+                                                                    <td><button type="submit"
+                                                                            class="btn btn-sm btn-primary mb-3 "
+                                                                            data-bs-toggle="modal"
+                                                                            data-bs-target="#addAddressModal">
+                                                                            Details</button></td>
+                                                                </tr>
+                                                                {{-- @endif --}}
+                                                                {{-- @endforeach --}}
 
                                                             </tbody>
                                                         </table>
@@ -2752,7 +2750,10 @@
                                                     </div><!-- /.modal-content -->
                                                 </div><!-- /.modal-dialog -->
                                             </div><!-- /.modal -->
-                                        @endforeach
+                                        </div>
+                                        {{-- @foreach ($products as $pr) --}}
+
+                                        {{-- @endforeach --}}
                                         <!-- end card body -->
                                     </form>
                                 </div>
@@ -3583,6 +3584,20 @@
     <script>
         var $ = jQuery;
 
+        // $(document).on('click', '.showDetails', function() {
+        //     var productId = $(this).data('product-id');
+        //     $.ajax({
+        //         url: 'products',
+        //         type: 'GET',
+        //         dataType: 'json',
+        //         success: function(productDetails) {
+        //             $('#addAddressModal #price').text(productDetails.price);
+        //             $('#addAddressModal #stocks').text(productDetails.stock);
+        //             $('#addAddressModal').modal('show');
+        //         }
+        //     });
+        // });
+
         $('.showDetails').click(function() {
             $('#editItemModal').addClass('show');
 
@@ -3597,7 +3612,14 @@
                 data: data,
                 // headers: { 'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content') },
                 success: function(response) {
-                    // console.log(data);
+                    //     response = Object.assign({
+                    //     'price': 0,
+                    //     'size': 0,
+                    //     'color': 0,
+                    //     'stocks': 0
+                    // }, response)
+                    // $('#price').text(response.import_price)
+
                 }
             })
         })

@@ -107,4 +107,8 @@ abstract class BaseRepository implements RepositoryInterface
 
     return false;
   }
+
+  public function getById($id){
+    return $this->model->all();
+  }
 }

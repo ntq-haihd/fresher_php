@@ -16,6 +16,7 @@ class Products extends Model
         'status',
         'cat_id',
         'description',
+        'thumbnail',
         'tags',
         'total_stocks'
     ];

@@ -36,7 +36,8 @@ class ProductsRepository extends BaseRepository
                 'status' => $data['status'],
                 'slug' => Str::slug($data['title']),
                 'cat_id' => $data['categories'],
-                'tags' => $data['tags']
+                'tags' => $data['tags'],
+                'thumbnail' => $data['thumbnail']
             ]
         );
 

@@ -3147,6 +3147,7 @@
             let image = $('.thumbnail').val();
             let title = $('.title').val();
             let description = $('.description').val();
+            // console.log(image);
 
 
             var formData = new FormData(this);

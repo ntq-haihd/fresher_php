@@ -29,9 +29,17 @@ class AddProductController extends Controller
 
     public function postAddProduct(Request $req)
     {
+        $dataProduct = json_decode($req['dataProduct']);
+        $variables = json_decode($req['variables']);
+        $thumbnail = $req['thumbnail'];
 
-
-        $this->productsService->create($req->all());
+        $data = [
+            'dataProduct' => $dataProduct,
+            'variables' => $variables,
+            'thumbnail' => $thumbnail
+        ];
+        // dd($data);
+        $this->productsService->create($data);
 
         return response()->json([
             'success' => true,

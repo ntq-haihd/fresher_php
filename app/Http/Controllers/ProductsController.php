@@ -12,6 +12,8 @@ class ProductsController extends Controller
 
     protected $productService;
     protected $productDetailsService;
+    private $id;
+
     public function __construct(ProductsService $productsService, ProductDetailsService $productDetailsService){
         $this->productService = $productsService;
         $this->productDetailsService = $productDetailsService;
@@ -20,22 +22,25 @@ class ProductsController extends Controller
 
     public function getProducts(){
 
-        $product = Session::get('productData');
+        // $product = Session::get('productData');
 
 
 
+
+        // dd($this->id);
+        // $productDetails = $this->productDetailsService->getById($this->id);
         $products = $this->productService->getAll();
-        $productDetails = $this->productDetailsService->getAll();
-        // dd($productDetails);
 
-        return view('products', compact('products', 'productDetails'));
-    }
+        // return view('products', compact('products'));
+        return view('products',[ 'products' => $products]);
+     }
 
     public function postProducts(Request $req){
 
-        $id = $req->productID;
-        // dd($id);
-        return $this->productDetailsService->find($id);
+        $id = $req['id'];
+
+        $productDetails = $this->productDetailsService->getById($id);
+        dd($productDetails);
 
     }
 }

@@ -11,9 +11,11 @@ use App\Repositories\AttributesVariablesRepository;
 use App\Repositories\ProductsRepository;
 use App\Repositories\CategoriesRepository;
 use App\Repositories\ProductVariablesRepository;
+use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
-
+use SplFileInfo;
 
 class ProductsService
 {
@@ -36,16 +38,18 @@ class ProductsService
         $this->categoriesRepository = $categoriesRepository;
     }
 
-    public function create(array $data)
+    public function create($data = [])
     {
+        // dd($data['dataProduct']->title);
 
         $product = [
-            'title' => $data['title'],
-            'description' => $data['description'],
-            'status' => ($data['status'] == 'Published') ? '0' : '1',
-            'slug' => Str::slug($data['title']),
-            'categories' => $data['categories'],
-            'tags' => $data['tags']
+            'title' => $data['dataProduct']->title,
+            'description' => $data['dataProduct']->description,
+            'status' => ($data['dataProduct']->status == 'Published') ? '0' : '1',
+            'slug' => Str::slug($data['dataProduct']->title),
+            'categories' => $data['dataProduct']->categories,
+            'tags' => $data['dataProduct']->tags,
+            'thumbnail' => Cloudinary::upload($data['thumbnail']->getRealPath())->getSecurePath()
         ];
 
 
@@ -54,10 +58,10 @@ class ProductsService
         $variables = [];
         foreach ($data['variables'] as $variable) {
             $vars = [
-                'import_price' => $variable['import_price'],
-                'stocks' => $variable['stocks'],
-                'color' => $variable['color'],
-                'size' => $variable['size']
+                'import_price' => $variable->import_price,
+                'stocks' => $variable->stocks,
+                'color' => $variable->color,
+                'size' => $variable->size
             ];
             array_push($variables, $vars);
         }

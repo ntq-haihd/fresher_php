@@ -36,10 +36,17 @@ class ProductDetailsService
     public function getAll()
     {
 
-        return $this->productVariablesRepository->getAll();
+        // return $this->productVariablesRepository->find();
     }
 
-    public function find($id){
+    public function getById($id)
+    {
+        return $this->productVariablesRepository->getById($id);
+
+    }
+
+    public function find($id)
+    {
 
         return $this->productVariablesRepository->find($id);
     }

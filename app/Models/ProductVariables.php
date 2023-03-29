@@ -14,4 +14,9 @@ class ProductVariables extends Model
         'stocks',
         'import_price'
     ];
+
+    public function attributes()
+    {
+        return $this->hasMany(AttributesVariables::class, 'product_variable_id');
+    }
 }
