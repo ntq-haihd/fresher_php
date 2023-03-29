@@ -44,7 +44,7 @@ class HomeController extends Controller
 					],
 					'm' => [
 						'stocks' => 5
-						
+
 					],
 					'l' => [
 						'stocks' => 5,
@@ -61,11 +61,11 @@ class HomeController extends Controller
                         's' => [
                             'stocks' => 10,
                             'price' => 35
-    
+
                         ],
                         'm' => [
                             'stocks' => 5
-                            
+
                         ],
                         'l' => [
                             'stocks' => 5,
@@ -82,11 +82,11 @@ class HomeController extends Controller
                             's' => [
                                 'stocks' => 5,
                                 'price' => 30
-        
+
                             ],
                             'm' => [
                                 'stocks' => 5
-                                
+
                             ],
                             'l' => [
                                 'stocks' => 5,
@@ -105,10 +105,10 @@ class HomeController extends Controller
 		], $var[strtolower($data['color'])] ?? []);
 
 		$size = !empty($var[strtolower($data['color'])]['size'][strtolower($data['size'])]) ? $var[strtolower($data['color'])]['size'][strtolower($data['size'])] : [];
-		$response = array_merge($response, $size);
+		$response = array_merge($response, $size);  
 		unset($response['size']);
 		return $response;
-        
+
 	}
 
 

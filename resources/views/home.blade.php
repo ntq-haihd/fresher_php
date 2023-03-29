@@ -3860,7 +3860,7 @@
 <script>
     var $ = jQuery;
 
-    // image swiper 
+    // image swiper
 
     (function($) {
         var swiper = new Swiper(".listSwiper", {
@@ -3899,7 +3899,7 @@
                 $('.revenue').text(response.revenue)
                 $('.stocks').text(response.stocks)
                 $('.images').text(response.images)
-                
+
 
                 // click chuyen anh theo mau
                 let swiper = new Swiper(".listSwiper", {
@@ -3908,7 +3908,7 @@
                 });
 
                 // swiper-slide-thumb-active
-                
+
 
                 let index = response.images;
                 if (index >= 0 && index < $('.swiper-wrapper').children().length) {

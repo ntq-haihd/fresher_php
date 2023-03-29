@@ -3,6 +3,8 @@
 namespace App\Repositories;
 
 use App\Repositories\RepositoryInterface;
+use Illuminate\Support\Facades\App;
+use League\CommonMark\Extension\Attributes\Node\Attributes;
 
 abstract class BaseRepository implements RepositoryInterface
 {
@@ -36,7 +38,7 @@ abstract class BaseRepository implements RepositoryInterface
 
   /**
    * It returns all the rows in the table
-   * 
+   *
    * @return All the data from the model.
    */
   public function getAll()
@@ -46,9 +48,9 @@ abstract class BaseRepository implements RepositoryInterface
 
   /**
    * It returns the model with the given id
-   * 
+   *
    * @param id The id of the model you want to find.
-   * 
+   *
    * @return The model object.
    */
   public function find($id)
@@ -58,9 +60,9 @@ abstract class BaseRepository implements RepositoryInterface
 
   /**
    * It creates a new model instance and saves it to the database
-   * 
-   * @param attributes The attributes you want to create the model with.
-   * 
+   *
+   * @param Attributes The attributes you want to create the model with.
+   *
    * @return The model is being created.
    */
   public function create($attributes = [])
@@ -70,10 +72,10 @@ abstract class BaseRepository implements RepositoryInterface
 
   /**
    * It updates the attributes of a model.
-   * 
+   *
    * @param id The id of the record you want to update.
    * @param attributes An array of attributes to update the model with.
-   * 
+   *
    * @return The updated record.
    */
   public function update($id, $attributes = [])
@@ -89,9 +91,9 @@ abstract class BaseRepository implements RepositoryInterface
 
   /**
    * It deletes the record from the database.
-   * 
+   *
    * @param id The id of the record to delete.
-   * 
+   *
    * @return The result of the find method.
    */
   public function delete($id)
@@ -104,5 +106,9 @@ abstract class BaseRepository implements RepositoryInterface
     }
 
     return false;
+  }
+
+  public function getById($id){
+    return $this->model->all();
   }
 }
